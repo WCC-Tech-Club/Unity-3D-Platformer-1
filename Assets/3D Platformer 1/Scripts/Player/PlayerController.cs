@@ -3,15 +3,15 @@
 [RequireComponent(typeof(Rigidbody))]
 public sealed class PlayerController : MonoBehaviour
 {
-	private Rigidbody rb;
+	private new Rigidbody rigidbody;
 
 	void Awake()
 	{
-		rb = GetComponent<Rigidbody>();
+		rigidbody = GetComponent<Rigidbody>();
 	}
 
 	void FixedUpdate()
 	{
-
+		
 	}
 }
