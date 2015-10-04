@@ -8,8 +8,6 @@ public sealed class LevelManager : MonoBehaviour
 	[SerializeField]
 	private string mainMenu;			// Scene name for the main menu.
 	[SerializeField]
-	private string tutorialLevel;		// Scene name for the tutorial level.
-	[SerializeField]
 	private string debugLevel;			// Scene name for the debug level.
 	[SerializeField]
 	private string[] levels;			// Scene names for the game levels.
@@ -24,11 +22,6 @@ public sealed class LevelManager : MonoBehaviour
 	///		</para>
 	/// </remarks>
 	public string MainMenuName { get { return mainMenu; } }
-
-	/// <summary>
-	///		Gets the name of the tutorial level.
-	/// </summary>
-	public string TutorialLevelName { get { return tutorialLevel; } }
 
 	/// <summary>
 	///		Gets the name of the debug level.
@@ -52,20 +45,6 @@ public sealed class LevelManager : MonoBehaviour
 	public void LoadMainMenu()
 	{
 		Application.LoadLevel(mainMenu);
-	}
-
-	/// <summary>
-	///		Loads the tutorial level.
-	/// </summary>
-	/// <remarks>
-	///		<para>
-	///			If the name returned by <see cref="TutorialLevelName"/> does not match the name of
-	///			a level built by unity then the level will not load an an error will be logged.
-	///		</para>
-	/// </remarks>
-	public void LoadTutorialLevel()
-	{
-		Application.LoadLevel(tutorialLevel);
 	}
 
 	/// <summary>
