@@ -10,6 +10,11 @@ public sealed class Game : MonoBehaviour
 	private static Game instance;			// Static reference of Game.
 
 	/// <summary>
+	///		Checks if an instance of the game component exists.
+	/// </summary>
+	public static bool Exists { get { return instance != null; } }
+
+	/// <summary>
 	///		Gets the <see cref="InputManager"/>.
 	/// </summary>
 	public static InputManager InputManager { get { return instance.inputManager; } }
@@ -39,10 +44,6 @@ public sealed class Game : MonoBehaviour
 	void Start()
 	{
 		// Load the main menu.
-		// TODO Eventually
-		//levelManager.LoadMainMenu();
-
-		// For now load debug.
-		levelManager.LoadDebugLevel();
+		levelManager.LoadMainMenu();
 	}
 }

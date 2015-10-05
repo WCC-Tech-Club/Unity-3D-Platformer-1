@@ -95,6 +95,7 @@ public sealed class LevelManager : MonoBehaviour
 	/// </param>
 	public void LoadLevel(int level)
 	{
+        Debug.Log(level);
 		Application.LoadLevel(levels[level]);
 	}
 }
