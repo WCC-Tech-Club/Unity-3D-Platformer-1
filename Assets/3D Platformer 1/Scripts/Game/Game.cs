@@ -70,8 +70,10 @@ public sealed class Game : MonoBehaviour
     /// </param>
     public void SetPaused(bool paused)
     {
+        // If the new paused state is different than the current paused state...
         if (this.paused != paused)
         {
+            // ... toggle the paused state
             TogglePaused();
         }
     }
@@ -81,14 +83,19 @@ public sealed class Game : MonoBehaviour
     /// </summary>
     public void TogglePaused()
     {
+        // If currently paused...
         if (paused)
         {
+            // ... set paused to false.
             paused = false;
+            // Set the time scale to 1.
             Time.timeScale = 1;
         }
         else
         {
+            // ... else set paused to true.
             paused = true;
+            // Set the time scale to 0.
             Time.timeScale = 0;
         }
     }
