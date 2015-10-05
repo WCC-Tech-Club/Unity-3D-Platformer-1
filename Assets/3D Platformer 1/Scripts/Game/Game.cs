@@ -14,19 +14,34 @@ public sealed class Game : MonoBehaviour
 	/// </summary>
 	public static bool Exists { get { return instance != null; } }
 
-	/// <summary>
-	///		Gets the <see cref="InputManager"/>.
-	/// </summary>
-	public static InputManager InputManager { get { return instance.inputManager; } }
+    /// <summary>
+    ///     Gets the existing `Game` instance.
+    /// </summary>
+    public static Game Instance { get { return instance; } }
 
-	/// <summary>
-	///		Gets the <see cref="LevelManager"/>.
-	/// </summary>
-	public static LevelManager LevelManager { get { return instance.levelManager; } }
+    /// <summary>
+    ///		Gets the <see cref="InputManager"/>.
+    /// </summary>
+    public static InputManager InputManager { get { return instance.inputManager; } }
+
+    /// <summary>
+    ///		Gets the <see cref="LevelManager"/>.
+    /// </summary>
+    public static LevelManager LevelManager { get { return instance.levelManager; } }
+
+    /// <summary>
+    ///     Checks if the game is currently paused
+    /// </summary>
+    public static bool Paused {
+        get { return instance.paused; }
+        set { instance.SetPaused(value); }
+    }
 	#endregion
 
 	private InputManager inputManager;		// Reference to InputManager.
 	private LevelManager levelManager;      // Reference if LevelManager.
+    
+    private bool paused;                    // Flag that denotes if the game is paused.
 
 	void Awake()
 	{
@@ -46,4 +61,35 @@ public sealed class Game : MonoBehaviour
 		// Load the main menu.
 		levelManager.LoadMainMenu();
 	}
+
+    /// <summary>
+    ///     Sets the paused state of the game.
+    /// </summary>
+    /// <param name="paused">
+    ///     The new paused state.
+    /// </param>
+    public void SetPaused(bool paused)
+    {
+        if (this.paused != paused)
+        {
+            TogglePaused();
+        }
+    }
+
+    /// <summary>
+    ///     Toggles the paused state of the game.
+    /// </summary>
+    public void TogglePaused()
+    {
+        if (paused)
+        {
+            paused = false;
+            Time.timeScale = 1;
+        }
+        else
+        {
+            paused = true;
+            Time.timeScale = 0;
+        }
+    }
 }

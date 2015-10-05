@@ -7,21 +7,44 @@ public class MenuManager : MonoBehaviour
 	[SerializeField]
 	private int startingMenu;
 
-	void OnValidate()
+    private int? currentMenu;
+
+    public int? CurrentMenu { get { return currentMenu; } }
+
+    void OnValidate()
 	{
 		startingMenu = Mathf.Clamp(startingMenu, 0, menuRoots.Length - 1);
 	}
 
 	void Awake()
 	{
-		Switch(startingMenu);
+        SwitchToStart();
 	}
 
-	public void Switch(int index)
-	{
-		for (int i = 0; i < menuRoots.Length; i++)
-		{
-			menuRoots[i].SetActive(i == index);
+	public void Switch(int? index)
+    {
+        currentMenu = null;
+        for (int i = 0; i < menuRoots.Length; i++)
+        {
+            if (i == index)
+            {
+                currentMenu = i;
+                menuRoots[i].SetActive(true);
+            }
+            else
+            {
+                menuRoots[i].SetActive(false);
+            }
         }
-	}
+    }
+
+    public void SwitchToStart()
+    {
+        Switch(startingMenu);
+    }
+
+    public void SwitchToNone()
+    {
+        Switch(null);
+    }
 }
