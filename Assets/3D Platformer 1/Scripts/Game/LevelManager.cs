@@ -12,6 +12,8 @@ public sealed class LevelManager : MonoBehaviour
 	[SerializeField]
 	private string[] levels;			// Scene names for the game levels.
 
+    private int? currentLevel;          // Current level in the levels array.
+
 	/// <summary>
 	///		Gets the name of the main menu.
 	/// </summary>
@@ -32,6 +34,16 @@ public sealed class LevelManager : MonoBehaviour
 	///		Gets the number of levels managed by the level manager.
 	/// </summary>
 	public int LevelCount { get { return levels.Length; } }
+
+    /// <summary>
+    ///     Gets the current level.
+    /// </summary>
+	/// <remarks>
+	///		<para>
+	///			This value is <c>null</c> if not loaded in an numeric level already.
+	///		</para>
+	/// </remarks>
+    public int? CurrentLevel { get { return currentLevel; } }
 
 	/// <summary>
 	///		Loads the main menu.
@@ -85,6 +97,9 @@ public sealed class LevelManager : MonoBehaviour
 	///		Loads the given level.
 	/// </summary>
 	/// <remarks>
+    ///     <para>
+    ///         Levels are loaded starting from 0 onward.
+    ///     </para>
 	///		<para>
 	///			If the name returned by <see cref="GetLevelName(int)"/> does not match the name of
 	///			a level built by unity then the level will not load an an error will be logged.
@@ -95,7 +110,6 @@ public sealed class LevelManager : MonoBehaviour
 	/// </param>
 	public void LoadLevel(int level)
 	{
-        Debug.Log(level);
 		Application.LoadLevel(levels[level]);
 	}
 }
