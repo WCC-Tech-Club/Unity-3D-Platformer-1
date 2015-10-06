@@ -2,6 +2,15 @@
 
 public class MenuSwitcher : MonoBehaviour
 {
+    public enum EscapeAction
+    {
+        None,       // No action when the escape key is pressed.
+        Toggle,     // Sets to start if none, sets to none if not none.
+        Return      // Returns to start if not none.
+    }
+
+    [SerializeField]
+    private EscapeAction escapeAction;      // Action to take when escape button is pressed.
 	[SerializeField]
 	private GameObject[] menuRoots;         // `GameObject`s representing the root objects for various menues.
 	[SerializeField]
