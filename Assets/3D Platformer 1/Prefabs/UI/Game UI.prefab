@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa267e6948e7994290f5e7bcb1dad23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  escapeAction: 1
+  menuButtonAction: 0
   menuRoots:
   - {fileID: 181858}
   startingMenu: 0
