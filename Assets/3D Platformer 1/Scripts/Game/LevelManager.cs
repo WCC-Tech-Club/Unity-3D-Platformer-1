@@ -5,6 +5,9 @@
 /// </summary>
 public sealed class LevelManager : MonoBehaviour
 {
+	/// <summary>
+	///		Enum to indicate the type of level.
+	/// </summary>
 	public enum LevelType : byte
 	{
 		/// <summary>
@@ -22,14 +25,14 @@ public sealed class LevelManager : MonoBehaviour
 	}
 
 	[SerializeField]
-	private string mainMenu;				// Scene name for the main menu.
+	private string mainMenu;                // Scene name for the main menu.
 	[SerializeField]
-	private string debugLevel;				// Scene name for the debug level.
+	private string debugLevel;              // Scene name for the debug level.
 	[SerializeField]
-	private string[] levels;				// Scene names for the game levels.
+	private string[] levels;                // Scene names for the game levels.
 
-	private LevelType currentLevelType;		// Current level type to identify from.
-    private int? currentLevel;				// Current level in the levels array.
+	private LevelType currentLevelType;     // Current level type to identify from.
+	private int? currentLevel;              // Current level in the levels array.
 
 	/// <summary>
 	///		Gets the name of the main menu.
@@ -57,15 +60,15 @@ public sealed class LevelManager : MonoBehaviour
 	/// </summary>
 	public LevelType CurrentLevelType { get { return currentLevelType; } }
 
-    /// <summary>
-    ///     Gets the current level.
-    /// </summary>
+	/// <summary>
+	///     Gets the current level.
+	/// </summary>
 	/// <remarks>
 	///		<para>
 	///			This value is <c>null</c> if not loaded in an numeric level already.
 	///		</para>
 	/// </remarks>
-    public int? CurrentLevel { get { return currentLevel; } }
+	public int? CurrentLevel { get { return currentLevel; } }
 
 	/// <summary>
 	///		Gets the current loaded levels name.
@@ -150,9 +153,9 @@ public sealed class LevelManager : MonoBehaviour
 	///		Loads the given level.
 	/// </summary>
 	/// <remarks>
-    ///     <para>
-    ///         Levels are loaded starting from 0 onward.
-    ///     </para>
+	///     <para>
+	///         Levels are loaded starting from 0 onward.
+	///     </para>
 	///		<para>
 	///			If the name returned by <see cref="GetLevelName(int)"/> does not match the name of
 	///			a level built by unity then the level will not load an an error will be logged.

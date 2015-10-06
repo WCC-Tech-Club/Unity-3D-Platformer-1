@@ -12,6 +12,6 @@ public sealed class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		
+
 	}
 }
