@@ -5,14 +5,31 @@
 /// </summary>
 public sealed class LevelManager : MonoBehaviour
 {
-	[SerializeField]
-	private string mainMenu;			// Scene name for the main menu.
-	[SerializeField]
-	private string debugLevel;			// Scene name for the debug level.
-	[SerializeField]
-	private string[] levels;			// Scene names for the game levels.
+	public enum LevelType : byte
+	{
+		/// <summary>
+		///		This type of level is the main menu.
+		/// </summary>
+		MainMenu,
+		/// <summary>
+		///		This type of level is the debug level.
+		/// </summary>
+		DebugLevel,
+		/// <summary>
+		///		This type of level is a numeric level within the indexed levels.
+		/// </summary>
+		NumericLevel
+	}
 
-    private int? currentLevel;          // Current level in the levels array.
+	[SerializeField]
+	private string mainMenu;				// Scene name for the main menu.
+	[SerializeField]
+	private string debugLevel;				// Scene name for the debug level.
+	[SerializeField]
+	private string[] levels;				// Scene names for the game levels.
+
+	private LevelType currentLevelType;		// Current level type to identify from.
+    private int? currentLevel;				// Current level in the levels array.
 
 	/// <summary>
 	///		Gets the name of the main menu.
@@ -35,6 +52,11 @@ public sealed class LevelManager : MonoBehaviour
 	/// </summary>
 	public int LevelCount { get { return levels.Length; } }
 
+	/// <summary>
+	///		Gets the level type currently loaded.
+	/// </summary>
+	public LevelType CurrentLevelType { get { return currentLevelType; } }
+
     /// <summary>
     ///     Gets the current level.
     /// </summary>
@@ -44,6 +66,33 @@ public sealed class LevelManager : MonoBehaviour
 	///		</para>
 	/// </remarks>
     public int? CurrentLevel { get { return currentLevel; } }
+
+	/// <summary>
+	///		Gets the current loaded levels name.
+	/// </summary>
+	public string CurrentLevelName
+	{
+		get
+		{
+			switch (currentLevelType)
+			{
+			case LevelType.MainMenu:
+				return mainMenu;
+			case LevelType.DebugLevel:
+				return debugLevel;
+			case LevelType.NumericLevel:
+				return levels[currentLevel.Value];
+			default:
+				if (Debug.isDebugBuild)
+				{
+					Debug.LogErrorFormat(this, "<b>THIS SHOULDNT HAPPEN</b>: A default case in a enum switch statement that shouldn't happen has happened. " +
+						"For debug purposes the enum value is `{0}` and for some reason if it has a name that is `{1}`",
+						(byte) CurrentLevelType, System.Enum.GetName(typeof(LevelType), currentLevelType));
+				}
+				return null;
+			}
+		}
+	}
 
 	/// <summary>
 	///		Loads the main menu.
@@ -57,6 +106,8 @@ public sealed class LevelManager : MonoBehaviour
 	public void LoadMainMenu()
 	{
 		Application.LoadLevel(mainMenu);
+		currentLevel = null;
+		currentLevelType = LevelType.MainMenu;
 	}
 
 	/// <summary>
@@ -71,6 +122,8 @@ public sealed class LevelManager : MonoBehaviour
 	public void LoadDebugLevel()
 	{
 		Application.LoadLevel(debugLevel);
+		currentLevel = null;
+		currentLevelType = LevelType.DebugLevel;
 	}
 
 	/// <summary>
@@ -111,5 +164,7 @@ public sealed class LevelManager : MonoBehaviour
 	public void LoadLevel(int level)
 	{
 		Application.LoadLevel(levels[level]);
+		currentLevel = level;
+		currentLevelType = LevelType.NumericLevel;
 	}
 }

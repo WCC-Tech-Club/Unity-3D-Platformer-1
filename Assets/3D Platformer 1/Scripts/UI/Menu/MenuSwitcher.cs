@@ -2,7 +2,7 @@
 
 public class MenuSwitcher : MonoBehaviour
 {
-    public enum MenuButtonAction
+    public enum MenuButtonAction : byte
     {
         None,       // No action when the menu button is pressed.
         Toggle,     // Sets to start if none, sets to none if not none.
