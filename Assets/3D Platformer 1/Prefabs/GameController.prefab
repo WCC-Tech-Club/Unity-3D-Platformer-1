@@ -43,7 +43,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: Main Menu
   debugLevel: Debug
-  levels: []
+  levels:
+  - Cube Level
+  - Sphere Level
+  - Capsule Level
 --- !u!114 &11485266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -75,19 +78,19 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: levels.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.Array.data[0]
-      value: A
+      value: Cube Level
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.Array.data[1]
-      value: B
+      value: Sphere Level
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.Array.data[2]
-      value: C
+      value: Capsule Level
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.Array.data[3]
