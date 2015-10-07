@@ -47,8 +47,8 @@ public sealed class PlayerController : MonoBehaviour
                 // ... then set this object as its target.
                 cameraController.Target = GetComponent<RigidbodyCameraTarget>();
 
-                // Set it to fixed update mode.
-                cameraController.UpdateMode = UpdateMode.Fixed;
+                // Set it to manual update mode if not already.
+                cameraController.UpdateMode = UpdateMode.Manual;
             }
             else
             {
