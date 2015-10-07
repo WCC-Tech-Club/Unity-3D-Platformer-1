@@ -15,11 +15,6 @@ public sealed class Game : MonoBehaviour
 	public static bool Exists { get { return instance != null; } }
 
 	/// <summary>
-	///     Gets the existing `Game` instance.
-	/// </summary>
-	public static Game Instance { get { return instance; } }
-
-	/// <summary>
 	///		Gets the <see cref="InputManager"/>.
 	/// </summary>
 	public static InputManager InputManager { get { return instance.inputManager; } }
@@ -35,7 +30,37 @@ public sealed class Game : MonoBehaviour
 	public static bool Paused
 	{
 		get { return instance.paused; }
-		set { instance.SetPaused(value); }
+		set
+		{
+			// If the new paused state is different than the current paused state...
+			if (instance.paused != value)
+			{
+				// ... toggle the paused state
+				TogglePaused();
+			}
+		}
+	}
+
+	/// <summary>
+	///     Toggles the paused state of the game.
+	/// </summary>
+	public static void TogglePaused()
+	{
+		// If currently paused...
+		if (instance.paused)
+		{
+			// ... set paused to false.
+			instance.paused = false;
+			// Set the time scale to 1.
+			Time.timeScale = 1;
+		}
+		else
+		{
+			// ... else set paused to true.
+			instance.paused = true;
+			// Set the time scale to 0.
+			Time.timeScale = 0;
+		}
 	}
 	#endregion
 
@@ -63,41 +88,8 @@ public sealed class Game : MonoBehaviour
 		levelManager.LoadMainMenu();
 	}
 
-	/// <summary>
-	///     Sets the paused state of the game.
-	/// </summary>
-	/// <param name="paused">
-	///     The new paused state.
-	/// </param>
-	public void SetPaused(bool paused)
+	void OnDestroy()
 	{
-		// If the new paused state is different than the current paused state...
-		if (this.paused != paused)
-		{
-			// ... toggle the paused state
-			TogglePaused();
-		}
-	}
-
-	/// <summary>
-	///     Toggles the paused state of the game.
-	/// </summary>
-	public void TogglePaused()
-	{
-		// If currently paused...
-		if (paused)
-		{
-			// ... set paused to false.
-			paused = false;
-			// Set the time scale to 1.
-			Time.timeScale = 1;
-		}
-		else
-		{
-			// ... else set paused to true.
-			paused = true;
-			// Set the time scale to 0.
-			Time.timeScale = 0;
-		}
+		instance = null;
 	}
 }
