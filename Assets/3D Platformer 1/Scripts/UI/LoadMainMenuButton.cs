@@ -19,7 +19,7 @@ public sealed class LoadMainMenuButton : MonoBehaviour
 			{
 				if (Debug.isDebugBuild)
 				{
-					Debug.LogErrorFormat(this, "<b>Game Not Found</b>: Level selector could not be obtained as the `Game` instance does not exist.");
+					Debug.LogErrorFormat(this, "<b>Game Not Found</b>: Level manager could not be obtained as the `Game` instance does not exist.");
 				}
 			}
 		});
