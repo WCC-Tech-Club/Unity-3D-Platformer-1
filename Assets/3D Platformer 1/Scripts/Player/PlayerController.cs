@@ -5,14 +5,17 @@ using Codari.CameraControl;
 [RequireComponent(typeof(RigidbodyCameraTarget))]
 public sealed class PlayerController : MonoBehaviour
 {
-    private new Rigidbody rigidbody;                // Reference to `Rigidbody`.
-    private InputManager inputManager;              // Reference to `InputManager`.
-    private CameraController cameraController;      // Reference to `CameraController`.
+    private new Rigidbody rigidbody;                    // Stores reference to the local Rigidbody.
+    private RigidbodyCameraTarget localCameraTarget;    // Stores reference to the local RigidbodyCameraTarget.
+
+    private InputManager inputManager;                  // Stores reference to the global InputManager.
+    private CameraController cameraController;          // Stores reference to the global CameraController.
 
     void Awake()
     {
-        // Reference the local `Rigidbody` component.
+        // Reference the local components.
         rigidbody = GetComponent<Rigidbody>();
+        localCameraTarget = GetComponent<RigidbodyCameraTarget>();
     }
 
     void OnEnable()
@@ -35,38 +38,17 @@ public sealed class PlayerController : MonoBehaviour
             return;
         }
 
-        // If the there is a main camera...
-        if (Camera.main != null)
+        // If level manager contains a level controller for the current level...
+        if (Game.LevelManager.LevelControllerExists)
         {
-            // ... then obtain its `CameraController`.
-            cameraController = Camera.main.GetComponent<CameraController>();
-
-            // If the camera controller was not obtained...
-            if (cameraController != null)
-            {
-                // ... then set this object as its target.
-                cameraController.Target = GetComponent<RigidbodyCameraTarget>();
-
-                // Set it to manual update mode if not already.
-                cameraController.UpdateMode = UpdateMode.Manual;
-            }
-            else
-            {
-                if (Debug.isDebugBuild)
-                {
-                    Debug.LogErrorFormat(this, "<b>CameraController Not Found</b>: No `CameraController` was found attached to the `Main Camera`.");
-                }
-
-                // ... else disable the `PlayerController`.
-                enabled = false;
-                return;
-            }
+            cameraController = Game.LevelManager.LevelController.CameraController;
         }
         else
         {
             if (Debug.isDebugBuild)
             {
-                Debug.LogErrorFormat(this, "<b>Main Camera Not Found</b>: No `Main Camera` was found in the current scene.");
+                Debug.LogErrorFormat(this, "<b>LevelController Not Found</b>: Current level `{0}` does not contain a `LevelController`.",
+                    Game.LevelManager.CurrentLevelName);
             }
 
             // ... else disable the `PlayerController`.
