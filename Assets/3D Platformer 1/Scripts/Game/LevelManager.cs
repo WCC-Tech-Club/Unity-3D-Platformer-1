@@ -212,8 +212,6 @@ public sealed class LevelManager : MonoBehaviour
             // ... return to the main menu.
             LoadMainMenu();
         }
-
-        Debug.Log(Application.loadedLevelName);
     }
 }
 
