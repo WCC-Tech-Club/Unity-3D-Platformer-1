@@ -2,24 +2,60 @@
 
 using System;
 
-using Codari.CameraControl;
-
 /// <summary>
 ///		Processes and manages settings for player input.
 /// </summary>
 public sealed class InputManager : MonoBehaviour
 {
     #region Input Settings
+    public const float MinCameraSensitivity = 1;
+    public const float MaxCameraSensitivity = 50;
+
     [Serializable]
-    private class CameraSettings
+    private class CameraInputSettings : ICameraSettings
     {
-        public float pitchAxisSensitivity;
-        public float yawAxisSensitivity;
-        public float zoomSensitivity;
+        [Range(MinCameraSensitivity, MaxCameraSensitivity)]
+        public float pitchAxisSensitivity = 20;
+
+        [Range(MinCameraSensitivity, MaxCameraSensitivity)]
+        public float yawAxisSensitivity = 20;
+
+        [Range(MinCameraSensitivity, MaxCameraSensitivity)]
+        public float zoomAxisSensitivity = 10;
+
+        public float PitchAxisSensitivity
+        {
+            get { return pitchAxisSensitivity; }
+            set { pitchAxisSensitivity = Mathf.Clamp(value, MinCameraSensitivity, MaxCameraSensitivity); }
+        }
+
+        public float YawAxisSensitivity
+        {
+            get { return yawAxisSensitivity; }
+            set { yawAxisSensitivity = Mathf.Clamp(value, MinCameraSensitivity, MaxCameraSensitivity); }
+        }
+
+        public float ZoomAxisSensitivity
+        {
+            get { return zoomAxisSensitivity; }
+            set { zoomAxisSensitivity = Mathf.Clamp(value, MinCameraSensitivity, MaxCameraSensitivity); }
+        }
+
+        public void Validate()
+        {
+            PitchAxisSensitivity = pitchAxisSensitivity;
+            YawAxisSensitivity = yawAxisSensitivity;
+            ZoomAxisSensitivity = zoomAxisSensitivity;
+        }
     }
 
     [SerializeField]
-    private CameraSettings cameraSettings;
+    private CameraInputSettings cameraSettings;
+
+    void OnValidate()
+    {
+        cameraSettings.Validate();
+    }
     #endregion
 
     #region Raw Input
@@ -38,9 +74,9 @@ public sealed class InputManager : MonoBehaviour
 
     public float VerticalAxis { get { return vertical; } }
 
-    public float MouseX { get { return MouseX; } }
+    public float MouseX { get { return mouseX; } }
 
-    public float MouseY { get { return MouseY; } }
+    public float MouseY { get { return mouseY; } }
 
     public float MouseScrollWheel { get { return mouseScrollWheel; } }
 
@@ -58,6 +94,16 @@ public sealed class InputManager : MonoBehaviour
     {
         ButtonAction(restartAction, ref restart);
     }
+    #endregion
+
+    #region CameraInput
+    public ICameraSettings CameraSettings { get { return cameraSettings; } }
+
+    public float CameraPitchAxis { get { return MouseY * cameraSettings.pitchAxisSensitivity; } }
+
+    public float CameraYawAxis { get { return MouseX * cameraSettings.yawAxisSensitivity; } }
+
+    public float CameraZoomAxis { get { return MouseScrollWheel * cameraSettings.zoomAxisSensitivity; } }
     #endregion
 
     #region Input Processing
@@ -94,4 +140,13 @@ public sealed class InputManager : MonoBehaviour
         }
     }
     #endregion
+}
+
+public interface ICameraSettings
+{
+    float PitchAxisSensitivity { get; set; }
+    
+    float YawAxisSensitivity { get; set; }
+
+    float ZoomAxisSensitivity { get; set; }
 }

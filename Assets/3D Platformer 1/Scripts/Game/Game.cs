@@ -6,7 +6,6 @@
 [RequireComponent(typeof(InputManager), typeof(LevelManager))]
 public sealed class Game : MonoBehaviour
 {
-
     private static Game game;               // Static reference of Game.
 
     /*

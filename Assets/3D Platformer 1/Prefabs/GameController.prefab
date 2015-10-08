@@ -44,10 +44,7 @@ MonoBehaviour:
   mainMenu: Main Menu
   debugLevel: Debug
   levels:
-  - Cube Level
-  - Sphere Level
-  - Capsule Level
-  - Cylender Level
+  - Test Level
 --- !u!114 &11485266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -59,6 +56,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a412b7f3677f74284095b0fd32fee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraSettings:
+    pitchAxisSensitivity: 20
+    yawAxisSensitivity: 20
+    zoomAxisSensitivity: 10
 --- !u!114 &11488376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,11 +80,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: levels.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.Array.data[0]
-      value: Cube Level
+      value: Test Level
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.Array.data[1]
@@ -120,6 +121,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: levels.Array.data[9]
       value: C
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cameraSettings.zoomAxisSensitivity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cameraSettings.yawAxisSensitivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: cameraSettings.pitchAxisSensitivity
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

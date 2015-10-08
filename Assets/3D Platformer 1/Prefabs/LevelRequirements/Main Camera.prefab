@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &106152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 450688}
+  - 20: {fileID: 2085442}
+  - 92: {fileID: 9288454}
+  - 124: {fileID: 12406202}
+  - 81: {fileID: 8102282}
+  - 114: {fileID: 11410420}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &450688
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106152}
+  m_LocalRotation: {x: .300705791, y: 0, z: 0, w: .953716934}
+  m_LocalPosition: {x: 0, y: 3.94145823, z: -4.91491222}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!20 &2085442
+Camera:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106152}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: .00999999978
+  far clip plane: 100
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
+--- !u!81 &8102282
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106152}
+  m_Enabled: 1
+--- !u!92 &9288454
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106152}
+  m_Enabled: 1
+--- !u!114 &11410420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1962867542, guid: b673ba6c406448d41a83b40a57528571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateMode: 1
+  dampenFlags: 89
+  target: {fileID: 0}
+  rotateWithTarget: 0
+  pivotPosition: {x: 0, y: .5, z: 0}
+  pivotRotation: {x: 0, y: 0, z: 0, w: 1}
+  pivotOffset: {x: 0, y: 0, z: 0}
+  pivotPositionDampening: .100000001
+  pivotRotationDampening: 0
+  pivotOffsetDampening: 0
+  minPitchClamp: 15
+  maxPitchClamp: 75
+  pitch: 35
+  pitchDampening: .100000001
+  clampYaw: 0
+  minYawClamp: 270
+  maxYawClamp: 90
+  yaw: 0
+  yawDampening: .125
+  clampRoll: 1
+  minRollClamp: 0
+  maxRollClamp: 0
+  roll: 0
+  rollDampening: 0
+  minZoomClamp: 2
+  maxZoomClamp: 10
+  zoom: 6
+  zoomDampening: .100000001
+  obstructionLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  sphereCastRadius: .0500000007
+  hitOffset: .100000001
+  returnZoomDampening: .5
+  toolBarSelection: 0
+  pivotRotationProxy: {x: 0, y: 0, z: 0}
+--- !u!124 &12406202
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106152}
+  m_Enabled: 1
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: updateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: toolBarSelection
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 106152}
+  m_IsPrefabParent: 1

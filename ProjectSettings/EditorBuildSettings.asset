@@ -12,10 +12,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/3D Platformer 1/Scenes/Debug.unity
   - enabled: 1
-    path: Assets/3D Platformer 1/Scenes/Levels/Cube Level.unity
-  - enabled: 1
-    path: Assets/3D Platformer 1/Scenes/Levels/Sphere Level.unity
-  - enabled: 1
-    path: Assets/3D Platformer 1/Scenes/Levels/Capsule Level.unity
-  - enabled: 1
-    path: Assets/3D Platformer 1/Scenes/Levels/Cylender Level.unity
+    path: Assets/3D Platformer 1/Scenes/Levels/Test Level.unity
