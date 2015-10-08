@@ -14,6 +14,8 @@ public class MenuSwitcher : MonoBehaviour
     [SerializeField]
     private GameObject[] menuRoots;                 // `GameObject`s representing the root objects for various menues.
     [SerializeField]
+    private bool awakeToNone;                       // Flag to determine if the menu should awake with no open menu.
+    [SerializeField]
     private int startingMenu;                       // Menu to start on when loaded.
 
     private int? currentMenu;                       // Current shown menu.
@@ -35,7 +37,14 @@ public class MenuSwitcher : MonoBehaviour
 
     void Awake()
     {
-        SwitchToStart();
+        if (awakeToNone)
+        {
+            SwitchToNone();
+        }
+        else
+        {
+            SwitchToStart();
+        }
     }
 
     /// <summary>
