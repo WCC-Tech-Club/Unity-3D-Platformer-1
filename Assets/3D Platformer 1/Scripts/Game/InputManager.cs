@@ -8,20 +8,20 @@ using System;
 public sealed class InputManager : MonoBehaviour
 {
     #region Input Settings
-    public const float MinCameraSensitivity = 1;
-    public const float MaxCameraSensitivity = 50;
+    public const float MinCameraSensitivity = 1;        // Minimum camera sensitivity value.
+    public const float MaxCameraSensitivity = 50;       // Maximum camera sensitivity value.
 
     [Serializable]
     private class CameraInputSettings : ICameraSettings
     {
         [Range(MinCameraSensitivity, MaxCameraSensitivity)]
-        public float pitchAxisSensitivity = 20;
+        public float pitchAxisSensitivity = 20;                 // Pitch axis sensitivity.
 
         [Range(MinCameraSensitivity, MaxCameraSensitivity)]
-        public float yawAxisSensitivity = 20;
+        public float yawAxisSensitivity = 20;                   // Yaw axis sensitivity.
 
         [Range(MinCameraSensitivity, MaxCameraSensitivity)]
-        public float zoomAxisSensitivity = 10;
+        public float zoomAxisSensitivity = 10;                  // Zoom axis sensitivity.
 
         public float PitchAxisSensitivity
         {
@@ -59,16 +59,16 @@ public sealed class InputManager : MonoBehaviour
     #endregion
 
     #region Raw Input
-    private float horizontal;
-    private float vertical;
-    private bool jump;
+    private float horizontal;           // Horizontal axis input value.
+    private float vertical;             // Vertical axis input value.
+    private bool jump;                  // jump button input value.
 
-    private float mouseX;
-    private float mouseY;
-    private float mouseScrollWheel;
+    private float mouseX;               // Mouse X axis input value.
+    private float mouseY;               // Mouse Y axis input value.
+    private float mouseScrollWheel;     // Mouse Scroll wheel input value.
 
-    private bool menu;
-    private bool restart;
+    private bool menu;                  // Menu button input value.
+    private bool restart;               // Restart button imput value.
 
     public float HorizontalAxis { get { return horizontal; } }
 

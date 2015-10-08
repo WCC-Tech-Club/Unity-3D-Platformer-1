@@ -9,8 +9,14 @@ public sealed class LevelController : MonoBehaviour
     [SerializeField]
     private Player player;
 
+    /// <summary>
+    ///     Gets the camera controller of the current level.
+    /// </summary>
     public CameraController CameraController { get { return cameraController; } }
 
+    /// <summary>
+    ///     Gets the player in the current level.
+    /// </summary>
     public Player Player { get { return player; } }
 
     void Awake()
@@ -48,6 +54,9 @@ public sealed class LevelController : MonoBehaviour
         Game.InputManager.RestartButton(Restart);
     }
 
+    /// <summary>
+    ///     Reloads the level to a fresh start.
+    /// </summary>
     public void Restart()
     {
         Game.LevelManager.ReloadCurrent();
