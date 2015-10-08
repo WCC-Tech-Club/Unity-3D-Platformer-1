@@ -985,6 +985,7 @@ MonoBehaviour:
   menuButtonAction: 1
   menuRoots:
   - {fileID: 172558}
+  awakeToNone: 1
   startingMenu: 0
 --- !u!114 &11498668
 MonoBehaviour:
