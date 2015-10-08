@@ -66,6 +66,9 @@ public class MenuSwitcher : MonoBehaviour
                 menuRoots[i].SetActive(false);
             }
         }
+
+        // Very simple and frankly lazy way to handle game pausing.
+        Game.Paused = currentMenu.HasValue;
     }
 
     /// <summary>
@@ -84,5 +87,36 @@ public class MenuSwitcher : MonoBehaviour
     {
         // Switch to -1 as no index will equal -1.
         Switch(-1);
+    }
+
+    void Update()
+    {
+        Game.InputManager.MenuButton(OnMenuButton);
+    }
+
+    void OnMenuButton()
+    {
+        switch (menuButtonAction)
+        {
+        case MenuButtonAction.Return:
+            if (currentMenu.HasValue && currentMenu.Value != startingMenu)
+            {
+                SwitchToStart();
+            }
+            break;
+        case MenuButtonAction.Toggle:
+            if (currentMenu.HasValue)
+            {
+                SwitchToNone();
+            }
+            else
+            {
+                SwitchToStart();
+            }
+            break;
+        case MenuButtonAction.None:
+        default:
+            break;
+        }
     }
 }

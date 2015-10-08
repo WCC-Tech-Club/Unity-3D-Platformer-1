@@ -34,9 +34,9 @@ public sealed class InputManager : MonoBehaviour
     private bool menu;
     private bool restart;
 
-    public float Horizontal { get { return horizontal; } }
+    public float HorizontalAxis { get { return horizontal; } }
 
-    public float Vertical { get { return vertical; } }
+    public float VerticalAxis { get { return vertical; } }
 
     public float MouseX { get { return MouseX; } }
 
@@ -44,17 +44,17 @@ public sealed class InputManager : MonoBehaviour
 
     public float MouseScrollWheel { get { return mouseScrollWheel; } }
 
-    public void Jump(Action jumpAction)
+    public void JumpButton(Action jumpAction)
     {
         ButtonAction(jumpAction, ref jump);
     }
 
-    public void Menu(Action menuAction)
+    public void MenuButton(Action menuAction)
     {
         ButtonAction(menuAction, ref menu);
     }
 
-    public void Restart(Action restartAction)
+    public void RestartButton(Action restartAction)
     {
         ButtonAction(restartAction, ref restart);
     }

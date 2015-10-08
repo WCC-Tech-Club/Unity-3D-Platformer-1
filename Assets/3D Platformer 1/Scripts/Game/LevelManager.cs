@@ -201,7 +201,7 @@ public sealed class LevelManager : MonoBehaviour
         }
 
         // If current level requires a level controller but one was not found...
-        if (currentLevelType.RequiresLevelController())
+        if (levelController == null && currentLevelType.RequiresLevelController())
         {
             if (Debug.isDebugBuild)
             {
@@ -212,6 +212,8 @@ public sealed class LevelManager : MonoBehaviour
             // ... return to the main menu.
             LoadMainMenu();
         }
+
+        Debug.Log(Application.loadedLevelName);
     }
 }
 
