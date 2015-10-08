@@ -183,6 +183,15 @@ public sealed class LevelManager : MonoBehaviour
         currentLevelType = LevelType.NumericLevel;
     }
 
+    /// <summary>
+    ///     Reloads the currently loaded level.
+    /// </summary>
+    public void ReloadCurrent()
+    {
+        // Reload current level to a fresh start.
+        Application.LoadLevel(CurrentLevelName);
+    }
+
     void OnLevelWasLoaded(int level)
     {
         // Find the object taged "LevelController".
