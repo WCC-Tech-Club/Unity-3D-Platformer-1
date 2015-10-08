@@ -199,5 +199,34 @@ public sealed class LevelManager : MonoBehaviour
             // ... else set level controller to null.
             levelController = null;
         }
+
+        // If current level requires a level controller but one was not found...
+        if (currentLevelType.RequiresLevelController())
+        {
+            if (Debug.isDebugBuild)
+            {
+                Debug.LogErrorFormat(this, "<b>LevelController Not Found</b>: Loaded level `{0}` requires a `LevelController` but does not have one, returning to {1}.",
+                    (currentLevel.HasValue ? "[" + currentLevel.Value + "]" : string.Empty) + CurrentLevelName, mainMenu);
+            }
+
+            // ... return to the main menu.
+            LoadMainMenu();
+        }
+    }
+}
+
+public static class LevelTypeExtensions
+{
+    public static bool RequiresLevelController(this LevelManager.LevelType levelType)
+    {
+        switch (levelType)
+        {
+        case LevelManager.LevelType.NumericLevel:
+        case LevelManager.LevelType.DebugLevel:
+            return true;
+        case LevelManager.LevelType.MainMenu:
+        default:
+            return false;
+        }
     }
 }

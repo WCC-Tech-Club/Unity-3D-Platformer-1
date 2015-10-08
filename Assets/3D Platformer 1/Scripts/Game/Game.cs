@@ -6,34 +6,64 @@
 [RequireComponent(typeof(InputManager), typeof(LevelManager))]
 public sealed class Game : MonoBehaviour
 {
-    #region Static Access
-    private static Game instance;           // Static reference of Game.
 
-    /// <summary>
-    ///		Checks if an instance of the game component exists.
-    /// </summary>
-    public static bool Exists { get { return instance != null; } }
+    private static Game game;               // Static reference of Game.
+
+    /*
+     This method validates the existence of the `Game` instance on startup, if not found then will quit the application or exit play mode.
+     */
+    [RuntimeInitializeOnLoadMethod]
+    static void ValidateGameExists()
+    {
+        // If instance does not exist...
+        if (game == null)
+        {
+            if (Debug.isDebugBuild)
+            {
+                Debug.LogError("<b>Game Not Found</b>: No instance of `Game` found on launch so application will now quit.");
+            }
+
+#if UNITY_EDITOR
+            // ... quit game in a delayed call.
+            UnityEditor.EditorApplication.delayCall += Quit;
+#else
+            // ... simply quit the game.
+            Quit();
+#endif
+        }
+    }
+
+    public static void Quit()
+    {
+#if UNITY_EDITOR
+        // Exit play mode if in the unity editor.
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // Quit the application if outside the unity editor.
+		Application.Quit();
+#endif
+    }
 
     /// <summary>
     ///		Gets the <see cref="InputManager"/>.
     /// </summary>
-    public static InputManager InputManager { get { return instance.inputManager; } }
+    public static InputManager InputManager { get { return game.inputManager; } }
 
     /// <summary>
     ///		Gets the <see cref="LevelManager"/>.
     /// </summary>
-    public static LevelManager LevelManager { get { return instance.levelManager; } }
+    public static LevelManager LevelManager { get { return game.levelManager; } }
 
     /// <summary>
     ///     Checks if the game is currently paused
     /// </summary>
     public static bool Paused
     {
-        get { return instance.paused; }
+        get { return game.paused; }
         set
         {
             // If the new paused state is different than the current paused state...
-            if (instance.paused != value)
+            if (game.paused != value)
             {
                 // ... toggle the paused state
                 TogglePaused();
@@ -47,23 +77,23 @@ public sealed class Game : MonoBehaviour
     public static void TogglePaused()
     {
         // If currently paused...
-        if (instance.paused)
+        if (game.paused)
         {
             // ... set paused to false.
-            instance.paused = false;
+            game.paused = false;
             // Set the time scale to 1.
             Time.timeScale = 1;
         }
         else
         {
             // ... else set paused to true.
-            instance.paused = true;
+            game.paused = true;
             // Set the time scale to 0.
             Time.timeScale = 0;
         }
     }
-    #endregion
 
+#region Game Internal
     private InputManager inputManager;      // Reference to InputManager.
     private LevelManager levelManager;      // Reference to LevelManager.
 
@@ -72,7 +102,7 @@ public sealed class Game : MonoBehaviour
     void Awake()
     {
         // Declare static reference.
-        instance = this;
+        game = this;
 
         // Obtain and reference other game managers.
         inputManager = GetComponent<InputManager>();
@@ -90,6 +120,15 @@ public sealed class Game : MonoBehaviour
 
     void OnDestroy()
     {
-        instance = null;
+        // If this is the global instance...
+        if (this == game)
+        {
+            // ... destory the entire object.
+            Destroy(gameObject);
+
+            // Set instance to null;
+            game = null;
+        }
     }
+#endregion
 }

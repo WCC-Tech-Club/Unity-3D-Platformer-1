@@ -6,22 +6,7 @@ public sealed class LoadDebugLevelButton : MonoBehaviour
 {
     void Awake()
     {
-        // Add a listener to the local `Button` component.
-        GetComponent<Button>().onClick.AddListener(() =>
-        {
-            // If game instance exists...
-            if (Game.Exists)
-            {
-                // ... load the debug level.
-                Game.LevelManager.LoadDebugLevel();
-            }
-            else
-            {
-                if (Debug.isDebugBuild)
-                {
-                    Debug.LogErrorFormat(this, "<b>Game Not Found</b>: Level manager could not be obtained as the `Game` instance does not exist.");
-                }
-            }
-        });
+        // Add a listener to the local `Button` component to load the debug level.
+        GetComponent<Button>().onClick.AddListener(Game.LevelManager.LoadDebugLevel);
     }
 }

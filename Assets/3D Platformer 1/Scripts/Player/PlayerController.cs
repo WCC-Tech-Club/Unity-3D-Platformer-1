@@ -20,41 +20,7 @@ public sealed class PlayerController : MonoBehaviour
 
     void OnEnable()
     {
-        // If game instance exists...
-        if (Game.Exists)
-        {
-            // ... reference the game's input manager.
-            inputManager = Game.InputManager;
-        }
-        else
-        {
-            if (Debug.isDebugBuild)
-            {
-                Debug.LogErrorFormat(this, "<b>Game Not Found</b>: Input manager could not be obtained as the `Game` instance does not exist.");
-            }
-
-            // ... else disable the `PlayerController`.
-            enabled = false;
-            return;
-        }
-
-        // If level manager contains a level controller for the current level...
-        if (Game.LevelManager.LevelControllerExists)
-        {
-            cameraController = Game.LevelManager.LevelController.CameraController;
-        }
-        else
-        {
-            if (Debug.isDebugBuild)
-            {
-                Debug.LogErrorFormat(this, "<b>LevelController Not Found</b>: Current level `{0}` does not contain a `LevelController`.",
-                    Game.LevelManager.CurrentLevelName);
-            }
-
-            // ... else disable the `PlayerController`.
-            enabled = false;
-            return;
-        }
+       
     }
 
     void FixedUpdate()

@@ -9,6 +9,7 @@ using Codari.CameraControl;
 /// </summary>
 public sealed class InputManager : MonoBehaviour
 {
+    #region Input Settings
     [Serializable]
     private class CameraSettings
     {
@@ -19,7 +20,9 @@ public sealed class InputManager : MonoBehaviour
 
     [SerializeField]
     private CameraSettings cameraSettings;
+    #endregion
 
+    #region Raw Input
     private float horizontal;
     private float vertical;
     private bool jump;
@@ -41,11 +44,6 @@ public sealed class InputManager : MonoBehaviour
 
     public float MouseScrollWheel { get { return mouseScrollWheel; } }
 
-    public void ApplyCameraInput(CameraController cameraController)
-    {
-
-    }
-
     public void Jump(Action jumpAction)
     {
         ButtonAction(jumpAction, ref jump);
@@ -60,7 +58,9 @@ public sealed class InputManager : MonoBehaviour
     {
         ButtonAction(restartAction, ref restart);
     }
+    #endregion
 
+    #region Input Processing
     void Update()
     {
         InputRawAxis("Horizontal", ref horizontal);
@@ -93,4 +93,5 @@ public sealed class InputManager : MonoBehaviour
             value = false;
         }
     }
+    #endregion
 }
