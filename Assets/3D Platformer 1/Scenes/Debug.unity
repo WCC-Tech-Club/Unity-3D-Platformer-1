@@ -1250,12 +1250,40 @@ Prefab:
       value: 
       objectReference: {fileID: 1613450838}
     - target: {fileID: 11410420, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}
+      propertyPath: pivotPosition.y
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410420, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}
+      propertyPath: zoomDampening
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410420, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}
+      propertyPath: returnZoomDampening
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410420, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}
       propertyPath: toolBarSelection
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11410420, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}
-      propertyPath: obstructionLayers.m_Bits
-      value: 1
+      propertyPath: pivotPositionDampening
+      value: .0500000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410420, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}
+      propertyPath: updateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410420, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}
+      propertyPath: minZoomClamp
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410420, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}
+      propertyPath: zoom
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410420, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}
+      propertyPath: maxZoomClamp
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}

@@ -12,7 +12,7 @@ public sealed class CurrentLevelText : MonoBehaviour
         text = GetComponent<Text>();
     }
 
-    void OnLevelWasLoaded(int level)
+    void Start()
     {
         // Get the current level nullable int value.
         int? currentLevel = Game.LevelManager.CurrentLevel;

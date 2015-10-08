@@ -82,6 +82,11 @@ public sealed class Game : MonoBehaviour
             game.paused = false;
             // Set the time scale to 1.
             Time.timeScale = 1;
+
+            // Hide the cursor while unpaused.
+            Cursor.visible = false;
+            // Lock the cursor while playing.
+            Cursor.lockState = CursorLockMode.Locked;
         }
         else
         {
@@ -89,6 +94,11 @@ public sealed class Game : MonoBehaviour
             game.paused = true;
             // Set the time scale to 0.
             Time.timeScale = 0;
+
+            // Make the cursor visible while paused.
+            Cursor.visible = true;
+            // Release the cursor while paused.
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 

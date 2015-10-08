@@ -44,10 +44,17 @@ public class Player : MonoBehaviour
         // If camera is targeting the player...
         if (IsCameraTargeting)
         {
-            // ... then apply camera input values from the input manager to the camera controller.
+            // ... then switch the update mode to fixed in case it wasn't already.
+            levelController.CameraController.UpdateMode = UpdateMode.Fixed;
+
+            // Apply camera input values from the input manager to the camera controller.
             levelController.CameraController.Pitch += Game.InputManager.CameraPitchAxis;
             levelController.CameraController.Yaw += Game.InputManager.CameraYawAxis;
             levelController.CameraController.Zoom += Game.InputManager.CameraZoomAxis;
+
+            // Tell the movement component to move.
+            playerMovement.Roll(Game.InputManager.HorizontalAxis, Game.InputManager.VerticalAxis, levelController.CameraController.Yaw);
+            Game.InputManager.JumpButton(playerMovement.Jump);
         }
     }
 }
