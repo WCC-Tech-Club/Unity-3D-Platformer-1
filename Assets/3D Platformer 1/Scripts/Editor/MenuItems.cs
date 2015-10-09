@@ -3,8 +3,10 @@ using UnityEditor;
 
 using Codari.CameraControl;
 
-public static class LevelEditorUtility
+public static class MenuItems
 {
+    private const string GameControllerPath = "Assets/3D Platformer 1/Prefabs/GameController.prefab";   // Location of the game controller prefab.
+
     private const string RootLevelRequirements = "Assets/3D Platformer 1/Prefabs/LevelRequirements/";       // Root directory of prefabs that are required in a level.
 
     private static readonly string[] LevelRequirementPrefabs =                                              // Array of prefab files that are required in a level.
@@ -14,6 +16,16 @@ public static class LevelEditorUtility
         "Main Camera.prefab",
         "Player.prefab"
     };
+
+    [MenuItem("WCC Tech Club/Game Controller %#g")]
+    public static void InspectGameController()
+    {
+        Object obj = AssetDatabase.LoadAssetAtPath(GameControllerPath, typeof(GameObject));
+        if (obj != null)
+        {
+            Selection.activeObject = obj;
+        }
+    }
 
     /// <summary>
     ///     Creates a new scene with all of the required objects added and connected.
