@@ -44,7 +44,8 @@ MonoBehaviour:
   mainMenu: Main Menu
   debugLevel: Debug
   levels:
-  - Test Level
+    strings:
+    - Test Level
 --- !u!114 &11485266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,8 +84,12 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: levels.strings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: levels.Array.data[0]
-      value: Test Level
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.Array.data[1]
@@ -133,6 +138,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: cameraSettings.pitchAxisSensitivity
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: levels.strings.Array.data[0]
+      value: Test Level
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
