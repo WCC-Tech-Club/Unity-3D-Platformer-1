@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106152}
   m_LocalRotation: {x: .300705791, y: 0, z: 0, w: .953716934}
-  m_LocalPosition: {x: 0, y: 3.94145823, z: -4.91491222}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
   dampenFlags: 89
   target: {fileID: 0}
   rotateWithTarget: 0
-  pivotPosition: {x: 0, y: .5, z: 0}
+  pivotPosition: {x: 0, y: 0, z: 0}
   pivotRotation: {x: 0, y: 0, z: 0, w: 1}
   pivotOffset: {x: 0, y: 0, z: 0}
   pivotPositionDampening: .0500000007
@@ -125,7 +125,7 @@ MonoBehaviour:
   sphereCastRadius: .100000001
   hitOffset: .100000001
   returnZoomDampening: .5
-  toolBarSelection: 4
+  toolBarSelection: 0
   pivotRotationProxy: {x: 0, y: 0, z: 0}
 --- !u!124 &12406202
 Behaviour:
@@ -147,7 +147,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: toolBarSelection
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: minZoomClamp
@@ -172,6 +172,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: zoomDampening
       value: .150000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pivotPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
