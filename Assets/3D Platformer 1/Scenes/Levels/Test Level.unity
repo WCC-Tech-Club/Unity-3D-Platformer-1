@@ -171,6 +171,10 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1890977885}
+    - target: {fileID: 11410420, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}
+      propertyPath: pivotPosition.y
+      value: .5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a73eb7df4721fcc41b06c2db56e95d66, type: 2}
   m_IsPrefabParent: 0

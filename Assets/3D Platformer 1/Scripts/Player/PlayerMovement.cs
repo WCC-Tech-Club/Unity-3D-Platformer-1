@@ -35,7 +35,11 @@ public sealed class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        // Add the jump force to the rigidbody as an impulse.
-        rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        // If a cast ray hits the ground...
+        if (Physics.Raycast(rigidbody.position, Vector3.down, 1))
+        {
+            // ... add the jump force to the rigidbody as an impulse.
+            rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
     }
 }
