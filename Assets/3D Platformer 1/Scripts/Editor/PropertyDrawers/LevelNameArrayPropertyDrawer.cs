@@ -3,8 +3,8 @@ using UnityEditor;
 
 using Rotorz.ReorderableList;
 
-[CustomPropertyDrawer(typeof(ReorderableStringArray), false)]
-public sealed class ReorderableStringArrayPropertyDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(LevelNameArray), false)]
+public sealed class LevelNameArrayPropertyDrawer : PropertyDrawer
 {
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {

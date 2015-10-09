@@ -29,7 +29,7 @@ public sealed class LevelManager : MonoBehaviour
     [SerializeField]
     private string debugLevel;                  // Scene name for the debug level.
     [SerializeField]
-    private ReorderableStringArray levels;      // Scene names for the game levels.
+    private LevelNameArray levels;              // Scene names for the game levels.
 
     private LevelType currentLevelType;         // Current level type to identify from.
     private int? currentLevel;                  // Current level in the levels array.

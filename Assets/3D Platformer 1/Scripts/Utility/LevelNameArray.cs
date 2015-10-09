@@ -3,7 +3,7 @@
 using System;
 
 [Serializable]
-public sealed class ReorderableStringArray
+public sealed class LevelNameArray
 {
     [SerializeField]
     private string[] strings;
