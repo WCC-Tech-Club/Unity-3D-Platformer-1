@@ -147,6 +147,14 @@ Prefab:
       propertyPath: levels.strings.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: debugLevel
+      value: Debug
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mainMenu
+      value: e
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 104780}

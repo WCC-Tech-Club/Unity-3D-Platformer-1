@@ -5,11 +5,13 @@ using Codari.CameraControl;
 
 public static class MenuItems
 {
-    private const string GameControllerPath = "Assets/3D Platformer 1/Prefabs/GameController.prefab";   // Location of the game controller prefab.
+    private const string GameControllerPath = "Assets/3D Platformer 1/Prefabs/GameController.prefab";   // Path to the game controller prefab.
 
-    private const string RootLevelRequirements = "Assets/3D Platformer 1/Prefabs/LevelRequirements/";       // Root directory of prefabs that are required in a level.
+    private const string StartupScenePath = "Assets/3D Platformer 1/Scenes/_Startup.unity";             // Path to the startup scene.
 
-    private static readonly string[] LevelRequirementPrefabs =                                              // Array of prefab files that are required in a level.
+    private const string RootLevelRequirements = "Assets/3D Platformer 1/Prefabs/LevelRequirements/";   // Root directory of prefabs that are required in a level.
+
+    private static readonly string[] LevelRequirementPrefabs =                                          // Array of prefab files that are required in a level.
     {
         "LevelController.prefab",
         "Level UI.prefab",
@@ -24,6 +26,15 @@ public static class MenuItems
         if (obj != null)
         {
             Selection.activeObject = obj;
+        }
+    }
+
+    [MenuItem("WCC Tech Club/Switch To Startup")]
+    public static void SwitchToStartupScene()
+    {
+        if (EditorApplication.SaveCurrentSceneIfUserWantsTo())
+        {
+            EditorApplication.OpenScene(StartupScenePath);
         }
     }
 
