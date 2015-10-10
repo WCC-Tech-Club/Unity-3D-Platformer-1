@@ -143,6 +143,10 @@ Prefab:
       propertyPath: levels.strings.Array.data[0]
       value: Test Level
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: levels.strings.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 104780}

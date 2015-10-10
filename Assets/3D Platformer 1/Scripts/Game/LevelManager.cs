@@ -24,9 +24,9 @@ public sealed class LevelManager : MonoBehaviour
         NumericLevel
     }
 
-    [SerializeField]
+    [SerializeField, LevelName]
     private string mainMenu;                    // Scene name for the main menu.
-    [SerializeField]
+    [SerializeField, LevelName]
     private string debugLevel;                  // Scene name for the debug level.
     [SerializeField]
     private LevelNameArray levels;              // Scene names for the game levels.

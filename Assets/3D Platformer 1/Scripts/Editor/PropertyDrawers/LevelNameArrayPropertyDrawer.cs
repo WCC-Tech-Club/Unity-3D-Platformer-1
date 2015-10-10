@@ -6,41 +6,24 @@ using Rotorz.ReorderableList;
 [CustomPropertyDrawer(typeof(LevelNameArray), false)]
 public sealed class LevelNameArrayPropertyDrawer : PropertyDrawer
 {
+    private const float TitleHeightModifier = 1.5f;
+    private const float HelpBoxHeightModifier = 2.5f;
+
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
     {
         SerializedProperty stringsProperty = property.FindPropertyRelative("strings");
         bool allValid = true;
-
-        EditorBuildSettingsScene[] buildScenes = EditorBuildSettings.scenes;
+        
         for (int i = 0; i < stringsProperty.arraySize; i++)
         {
-            bool found = false;
-            bool empty = false;
-
-            for (int j = 0; j < buildScenes.Length; j++)
-            {
-                string listValue = stringsProperty.GetArrayElementAtIndex(i).stringValue;
-                if (listValue.Length == 0)
-                {
-                    empty = true;
-                    break;
-                }
-                if (buildScenes[j].path.Contains(stringsProperty.GetArrayElementAtIndex(i).stringValue + ".unity"))
-                {
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found || empty)
+            if (!LevelNameUtility.IsInBuildSettings(stringsProperty.GetArrayElementAtIndex(i).stringValue))
             {
                 allValid = false;
-                break;
             }
         }
 
-        return EditorGUIUtility.singleLineHeight * 1.5f +
-            (!allValid ? EditorGUIUtility.singleLineHeight * 2 : 0) +
+        return EditorGUIUtility.singleLineHeight * TitleHeightModifier +
+            (!allValid ? EditorGUIUtility.singleLineHeight * HelpBoxHeightModifier : 0) +
             ReorderableListGUI.CalculateListFieldHeight(stringsProperty);
     }
 
@@ -49,38 +32,18 @@ public sealed class LevelNameArrayPropertyDrawer : PropertyDrawer
         SerializedProperty stringsProperty = property.FindPropertyRelative("strings");
         bool allValid = true;
 
-        EditorBuildSettingsScene[] buildScenes = EditorBuildSettings.scenes;
         for (int i = 0; i < stringsProperty.arraySize; i++)
         {
-            bool found = false;
-            bool empty = false;
-
-            for (int j = 0; j < buildScenes.Length; j++)
-            {
-                string listValue = stringsProperty.GetArrayElementAtIndex(i).stringValue;
-                if (listValue.Length == 0)
-                {
-                    empty = true;
-                    break;
-                }
-                if (buildScenes[j].path.Contains(stringsProperty.GetArrayElementAtIndex(i).stringValue + ".unity"))
-                {
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found || empty)
+            if (!LevelNameUtility.IsInBuildSettings(stringsProperty.GetArrayElementAtIndex(i).stringValue))
             {
                 allValid = false;
-                break;
             }
         }
 
         ReorderableListStyles.Title.fontStyle = FontStyle.Bold;
 
         Rect titlePosition = new Rect(position);
-        titlePosition.height = EditorGUIUtility.singleLineHeight * 1.5f;
+        titlePosition.height = EditorGUIUtility.singleLineHeight * TitleHeightModifier;
         ReorderableListGUI.Title(titlePosition, label);
 
         Rect listPosition = new Rect(position);
@@ -88,7 +51,7 @@ public sealed class LevelNameArrayPropertyDrawer : PropertyDrawer
         if (!allValid)
         {
             Rect helpBoxPosition = new Rect(position);
-            helpBoxPosition.height = EditorGUIUtility.singleLineHeight * 2;
+            helpBoxPosition.height = EditorGUIUtility.singleLineHeight * HelpBoxHeightModifier;
             helpBoxPosition.y += titlePosition.height;
 
             listPosition.height = position.height - (titlePosition.height + helpBoxPosition.height);
@@ -102,6 +65,6 @@ public sealed class LevelNameArrayPropertyDrawer : PropertyDrawer
             listPosition.y += titlePosition.height;
         }
 
-        ReorderableListGUI.ListFieldAbsolute(listPosition, property.FindPropertyRelative("strings"));
+        ReorderableListGUI.ListFieldAbsolute(listPosition, stringsProperty);
     }
 }

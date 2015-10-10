@@ -5,7 +5,7 @@ using System;
 [Serializable]
 public sealed class LevelNameArray
 {
-    [SerializeField]
+    [SerializeField, LevelName]
     private string[] strings;
 
     public int Length { get { return strings.Length; } }
