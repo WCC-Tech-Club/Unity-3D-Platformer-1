@@ -12,7 +12,7 @@ public static class LevelNameUtility
         EditorBuildSettingsScene[] buildScenes = EditorBuildSettings.scenes;
         for (int i = 0; i < buildScenes.Length; i++)
         {
-            if (buildScenes[i].path.Contains(levelName + ".unity"))
+            if (buildScenes[i].path.Contains("/" + levelName + ".unity"))
             {
                 return true;
             }
