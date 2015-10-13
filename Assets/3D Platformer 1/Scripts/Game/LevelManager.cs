@@ -109,6 +109,8 @@ public sealed class LevelManager : MonoBehaviour
         }
     }
 
+    public float CurrentLevelBestTime { get { return currentLevel.HasValue ? PlayerPrefs.GetFloat(levels[currentLevel.Value], 99999.99f) : -1; } }
+
     /// <summary>
     ///		Loads the main menu.
     /// </summary>
