@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+using System;
+
 /// <summary>
 ///		Core component of the game, primary access to game data.
 /// </summary>

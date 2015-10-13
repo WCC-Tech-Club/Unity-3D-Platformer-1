@@ -55,29 +55,33 @@ public class MenuSwitcher : MonoBehaviour
     /// </param>
     public void Switch(int index)
     {
-        // Set the current menu to null for now.
-        currentMenu = null;
-
-        // For each menu root...
-        for (int i = 0; i < menuRoots.Length; i++)
+        // If enabled...
+        if (enabled)
         {
-            // ... if the index equals the menu root index.
-            if (i == index)
-            {
-                // ... then set the current menu to the index.
-                currentMenu = i;
-                // Set active to true the new current menu.
-                menuRoots[i].SetActive(true);
-            }
-            else
-            {
-                // ... this menu root is not active so set active to false.
-                menuRoots[i].SetActive(false);
-            }
-        }
+            // ... set the current menu to null for now.
+            currentMenu = null;
 
-        // Very simple and frankly lazy way to handle game pausing.
-        Game.Paused = currentMenu.HasValue;
+            // For each menu root...
+            for (int i = 0; i < menuRoots.Length; i++)
+            {
+                // ... if the index equals the menu root index.
+                if (i == index)
+                {
+                    // ... then set the current menu to the index.
+                    currentMenu = i;
+                    // Set active to true the new current menu.
+                    menuRoots[i].SetActive(true);
+                }
+                else
+                {
+                    // ... this menu root is not active so set active to false.
+                    menuRoots[i].SetActive(false);
+                }
+            }
+
+            // Very simple and frankly lazy way to handle game pausing.
+            Game.Paused = currentMenu.HasValue;
+        }
     }
 
     /// <summary>
