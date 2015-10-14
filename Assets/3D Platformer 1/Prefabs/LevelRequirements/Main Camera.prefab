@@ -98,7 +98,7 @@ MonoBehaviour:
   pivotPosition: {x: 0, y: .5, z: 0}
   pivotRotation: {x: 0, y: 0, z: 0, w: 1}
   pivotOffset: {x: 0, y: 0, z: 0}
-  pivotPositionDampening: .0500000007
+  pivotPositionDampening: .00999999978
   pivotRotationDampening: 0
   pivotOffsetDampening: 0
   minPitchClamp: 15
@@ -125,7 +125,7 @@ MonoBehaviour:
   sphereCastRadius: .100000001
   hitOffset: .100000001
   returnZoomDampening: .5
-  toolBarSelection: 4
+  toolBarSelection: 0
   pivotRotationProxy: {x: 0, y: 0, z: 0}
 --- !u!124 &12406202
 Behaviour:
@@ -147,7 +147,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: toolBarSelection
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: minZoomClamp
@@ -192,6 +192,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pivotPositionDampening
+      value: .00999999978
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

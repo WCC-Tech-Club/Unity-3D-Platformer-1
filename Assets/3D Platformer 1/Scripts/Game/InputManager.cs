@@ -11,7 +11,7 @@ public sealed class InputManager : MonoBehaviour
     public const float DefaultCameraPitchAxisSensitivity = 20;
     public const float DefaultCameraYawAxisSensitivity = 20;
     public const float DefaultCameraZoomAxisSensitivity = 10;
-    public const bool DefaultCameraInvertZoom = false;
+    public const int DefaultCameraInvertZoom = 0;
 
     public const float MinCameraSensitivity = 1;        // Minimum camera sensitivity value.
     public const float MaxCameraSensitivity = 50;       // Maximum camera sensitivity value.
@@ -33,7 +33,7 @@ public sealed class InputManager : MonoBehaviour
         [Range(MinCameraSensitivity, MaxCameraSensitivity)]
         public float zoomAxisSensitivity = DefaultCameraZoomAxisSensitivity;            // Zoom axis sensitivity.
 
-        public bool invertZoom = DefaultCameraInvertZoom;                               // Flag for inverting zoom;
+        public bool invertZoom = DefaultCameraInvertZoom == 1;                          // Flag for inverting zoom;
 
         public float PitchAxisSensitivity
         {
@@ -71,7 +71,8 @@ public sealed class InputManager : MonoBehaviour
             PitchAxisSensitivity = PlayerPrefs.GetFloat(PitchAxisSensitivityPrefKey, DefaultCameraPitchAxisSensitivity);
             YawAxisSensitivity = PlayerPrefs.GetFloat(YawAxisSensitivityPrefKey, DefaultCameraYawAxisSensitivity);
             ZoomAxisSensitivity = PlayerPrefs.GetFloat(ZoomAxisSensitivityPrefKey, DefaultCameraZoomAxisSensitivity);
-            InvertZoom = PlayerPrefs.GetInt(InvertZoomPrefKey, DefaultCameraInvertZoom ? 1 : 0) == 1;
+            InvertZoom = PlayerPrefs.GetInt(InvertZoomPrefKey, DefaultCameraInvertZoom) == 1;
+                                                                                           
         }
 
         public void SaveToPrefs()

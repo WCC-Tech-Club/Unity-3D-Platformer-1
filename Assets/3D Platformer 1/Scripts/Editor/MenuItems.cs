@@ -61,10 +61,7 @@ public static class MenuItems
                 GameObject requiredPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(RootLevelRequirements + levelRequirement);
 
                 // Instantiate it within the new scene connected to the prefab.
-                GameObject requiredObject = PrefabUtility.InstantiatePrefab(requiredPrefab) as GameObject;
-
-                // Disconect it from the prefab so changes to the prefab do not effect the newly created object
-                PrefabUtility.DisconnectPrefabInstance(requiredObject);
+                PrefabUtility.InstantiatePrefab(requiredPrefab);
             }
 
             // Reference the objects that need connecting to each other.
@@ -72,7 +69,10 @@ public static class MenuItems
             LevelController levelController = Object.FindObjectOfType<LevelController>();
             CameraController cameraController = Object.FindObjectOfType<CameraController>();
             Player player = Object.FindObjectOfType<Player>();
-            
+
+            // Disconect required objects from prefabs if appropriate to do so.
+            PrefabUtility.DisconnectPrefabInstance(endOfLevel);
+
             // Create a new serialized object of the end of level.
             SerializedObject serializedEndOfLevel = new SerializedObject(endOfLevel);
 

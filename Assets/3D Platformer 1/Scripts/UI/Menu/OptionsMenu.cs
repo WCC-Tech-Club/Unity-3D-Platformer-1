@@ -8,8 +8,8 @@ public sealed class OptionsMenu : MonoBehaviour
     [Serializable]
     private class SliderGroup
     {
-        public Text label;
-        public Slider slider;
+        public Text label = null;
+        public Slider slider = null;
 
         public bool UnsavedChange { get; private set; }
 
@@ -55,8 +55,8 @@ public sealed class OptionsMenu : MonoBehaviour
     [Serializable]
     private class ToggleGroup
     {
-        public Toggle toggle;
-        public Text label;
+        public Toggle toggle = null;
+        public Text label = null;
 
         public bool UnsavedChange { get; private set; }
 
@@ -169,6 +169,6 @@ public sealed class OptionsMenu : MonoBehaviour
         cameraPitchAxisSensitivityOption.DefaultValue(InputManager.DefaultCameraPitchAxisSensitivity);
         cameraYawAxisSensitivityOption.DefaultValue(InputManager.DefaultCameraYawAxisSensitivity);
         cameraZoomAxisSensitivityOption.DefaultValue(InputManager.DefaultCameraZoomAxisSensitivity);
-        cameraInvertZoomOption.DefaultValue(InputManager.DefaultCameraInvertZoom);
+        cameraInvertZoomOption.DefaultValue(InputManager.DefaultCameraInvertZoom == 1);
     }
 }
