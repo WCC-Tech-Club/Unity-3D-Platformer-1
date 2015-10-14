@@ -148,8 +148,8 @@ public sealed class InputManager : MonoBehaviour
     #region Input Processing
     void Update()
     {
-        InputRawAxis("Horizontal", ref horizontal);
-        InputRawAxis("Vertical", ref vertical);
+        InputAxis("Horizontal", ref horizontal);
+        InputAxis("Vertical", ref vertical);
 
         InputRawAxis("Mouse X", ref mouseX);
         InputRawAxis("Mouse Y", ref mouseY);
@@ -157,6 +157,11 @@ public sealed class InputManager : MonoBehaviour
 
         InputButtonDown("Menu", ref menu);
         InputButtonDown("Restart", ref restart);
+    }
+
+    private void InputAxis(string name, ref float value)
+    {
+        value = Input.GetAxis(name);
     }
 
     private void InputRawAxis(string name, ref float value)

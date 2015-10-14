@@ -250,6 +250,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 22420558}
   - 114: {fileID: 11460160}
+  - 114: {fileID: 11428972}
   m_Layer: 5
   m_Name: CompleteTimeTexts
   m_TagString: Untagged
@@ -918,6 +919,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11428972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eac98117e3c62f47a859a0cac7d93d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimeText: {fileID: 11443664}
+  bestTimeText: {fileID: 11461318}
 --- !u!114 &11431688
 MonoBehaviour:
   m_ObjectHideFlags: 1
