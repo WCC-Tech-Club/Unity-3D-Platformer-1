@@ -8,28 +8,28 @@ using System;
 public sealed class InputManager : MonoBehaviour
 {
     #region Input Settings
+    public const float DefaultCameraPitchAxisSensitivity = 20;
+    public const float DefaultCameraYawAxisSensitivity = 20;
+    public const float DefaultCameraZoomAxisSensitivity = 10;
+
     public const float MinCameraSensitivity = 1;        // Minimum camera sensitivity value.
     public const float MaxCameraSensitivity = 50;       // Maximum camera sensitivity value.
 
     [Serializable]
     private class CameraInputSettings : ICameraSettings
     {
-        private const float DefaultPitchAxisSensitivity = 20;
-        private const float DefaultYawAxisSensitivity = 20;
-        private const float DefaultZoomAxisSensitivity = 10;
-
         private const string PitchAxisSensitivityPrefKey = "camera-pitch-axis-sensitivity";
         private const string YawAxisSensitivityPrefKey = "camera-yaw-axis-sensitivity";
         private const string ZoomAxisSensitivityPrefKey = "camera-zoom-axis-sensitivity";
 
         [Range(MinCameraSensitivity, MaxCameraSensitivity)]
-        public float pitchAxisSensitivity = DefaultPitchAxisSensitivity;            // Pitch axis sensitivity.
+        public float pitchAxisSensitivity = DefaultCameraPitchAxisSensitivity;          // Pitch axis sensitivity.
 
         [Range(MinCameraSensitivity, MaxCameraSensitivity)]
-        public float yawAxisSensitivity = DefaultYawAxisSensitivity;                // Yaw axis sensitivity.
+        public float yawAxisSensitivity = DefaultCameraYawAxisSensitivity;              // Yaw axis sensitivity.
 
         [Range(MinCameraSensitivity, MaxCameraSensitivity)]
-        public float zoomAxisSensitivity = DefaultZoomAxisSensitivity;              // Zoom axis sensitivity.
+        public float zoomAxisSensitivity = DefaultCameraZoomAxisSensitivity;            // Zoom axis sensitivity.
 
         public float PitchAxisSensitivity
         {
@@ -58,9 +58,9 @@ public sealed class InputManager : MonoBehaviour
 
         public void LoadFromPrefs()
         {
-            PitchAxisSensitivity = PlayerPrefs.GetFloat(PitchAxisSensitivityPrefKey, DefaultPitchAxisSensitivity);
-            PitchAxisSensitivity = PlayerPrefs.GetFloat(YawAxisSensitivityPrefKey, DefaultYawAxisSensitivity);
-            PitchAxisSensitivity = PlayerPrefs.GetFloat(ZoomAxisSensitivityPrefKey, DefaultZoomAxisSensitivity);
+            PitchAxisSensitivity = PlayerPrefs.GetFloat(PitchAxisSensitivityPrefKey, DefaultCameraPitchAxisSensitivity);
+            YawAxisSensitivity = PlayerPrefs.GetFloat(YawAxisSensitivityPrefKey, DefaultCameraYawAxisSensitivity);
+            ZoomAxisSensitivity = PlayerPrefs.GetFloat(ZoomAxisSensitivityPrefKey, DefaultCameraZoomAxisSensitivity);
         }
 
         public void SaveToPrefs()
