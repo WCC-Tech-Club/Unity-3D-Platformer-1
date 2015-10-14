@@ -22,7 +22,9 @@ public sealed class LevelSelector : MonoBehaviour
             // Access the `Text` component within the instantiated object.
             Text text = levelSelectionButton.GetComponentInChildren<Text>();
             // Set the button text to look like "Level <level number>: <level name>".
-            text.text = "Level " + (i + 1) + ": " + Game.LevelManager.GetLevelName(i) + Environment.NewLine + "Best Time: " + Game.LevelManager.GetBestTimeFormated(i);
+            text.text =
+                "Level " + (i + 1) + ": " + Game.LevelManager.GetLevelName(i) + Environment.NewLine +
+                "Best Time: " + Game.LevelManager.GetBestTimeFormated(i);
 
             // Reference the level index into a value that will never change
             int levelIndex = i;

@@ -116,7 +116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &119482
 GameObject:
   m_ObjectHideFlags: 1
@@ -249,6 +249,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 22420558}
+  - 114: {fileID: 11460160}
   m_Layer: 5
   m_Name: CompleteTimeTexts
   m_TagString: Untagged
@@ -283,7 +284,6 @@ GameObject:
   - 224: {fileID: 22451588}
   - 222: {fileID: 22268762}
   - 114: {fileID: 11443664}
-  - 114: {fileID: 11454088}
   m_Layer: 5
   m_Name: YourTimeText
   m_TagString: Untagged
@@ -473,7 +473,6 @@ GameObject:
   - 224: {fileID: 22472836}
   - 222: {fileID: 22221996}
   - 114: {fileID: 11461318}
-  - 114: {fileID: 11403800}
   m_Layer: 5
   m_Name: BestTimeText
   m_TagString: Untagged
@@ -629,17 +628,6 @@ Transform:
   - {fileID: 408048}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11403800
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eac98117e3c62f47a859a0cac7d93d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11404090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1360,17 +1348,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11454088
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b1e075a6fcb7d140857d6d65d4ad364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11454864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1539,6 +1516,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &11460160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eac98117e3c62f47a859a0cac7d93d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimeText: {fileID: 11443664}
+  bestTimeText: {fileID: 11461318}
 --- !u!114 &11461318
 MonoBehaviour:
   m_ObjectHideFlags: 1

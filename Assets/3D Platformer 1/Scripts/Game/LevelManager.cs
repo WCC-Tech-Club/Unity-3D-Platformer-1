@@ -5,6 +5,35 @@
 /// </summary>
 public sealed class LevelManager : MonoBehaviour
 {
+    private const string NoLevelTimeFormatResult = "N/A";
+    private const string BestTimeKeyPrefix = "level-best-time-";
+
+    public static string FormatLevelTime(float? time)
+    {
+        return time.HasValue ? time.Value.ToString("0.##") + " Seconds" : NoLevelTimeFormatResult;
+    }
+
+    private static float? GetBestTime(string levelName)
+    {
+        string key = BestTimeKeyPrefix + levelName;
+        return PlayerPrefs.HasKey(key) ? PlayerPrefs.GetFloat(key) : (float?) null;
+    }
+
+    private static string GetBestTimeFormated(string levelName)
+    {
+        return FormatLevelTime(GetBestTime(levelName));
+    }
+
+    private static void SetBestTime(string levelName, float time)
+    {
+        PlayerPrefs.SetFloat(BestTimeKeyPrefix + levelName, time);
+    }
+
+    private static void ClearBestTime(string levelName)
+    {
+        PlayerPrefs.DeleteKey(BestTimeKeyPrefix + levelName);
+    }
+
     /// <summary>
     ///		Enum to indicate the type of level.
     /// </summary>
@@ -109,6 +138,10 @@ public sealed class LevelManager : MonoBehaviour
         }
     }
 
+    public float? CurrentLevelBestTime { get { return currentLevel.HasValue ? GetBestTime(currentLevel.Value) : null; } }
+
+    public string CurrentLevelBestTimeFormated { get { return currentLevel.HasValue ? GetBestTimeFormated(currentLevel.Value) : NoLevelTimeFormatResult; } }
+
     /// <summary>
     ///		Loads the main menu.
     /// </summary>
@@ -192,19 +225,48 @@ public sealed class LevelManager : MonoBehaviour
         Application.LoadLevel(CurrentLevelName);
     }
 
-    public static string FormatTime(float time)
+    public float? GetBestTime(int level)
     {
-        return time.ToString("0.##") + " Seconds";
-    }
-
-    public float GetBestTime(int level)
-    {
-        return PlayerPrefs.GetFloat(levels[level], 99999.99f);
+        return GetBestTime(levels[level]);
     }
 
     public string GetBestTimeFormated(int level)
     {
-        return FormatTime(GetBestTime(level));
+        return GetBestTimeFormated(levels[level]);
+    }
+
+    public void SetBestTime(int level, float time)
+    {
+        SetBestTime(levels[level], time);
+    }
+
+    public void SetCurrentLevelBestTime(float time)
+    {
+        if (currentLevel.HasValue)
+        {
+            SetBestTime(currentLevel.Value, time);
+        }
+    }
+
+    public void ClearBestTime(int level)
+    {
+        ClearBestTime(levels[level]);
+    }
+
+    public void ClearCurrentLevelBestTime()
+    {
+        if (currentLevel.HasValue)
+        {
+            ClearBestTime(currentLevel.Value);
+        }
+    }
+
+    public void ClearAllBestTimes()
+    {
+        for (int i = 0; i < levels.Length; i++)
+        {
+            ClearBestTime(i);
+        }
     }
 
     void OnLevelWasLoaded(int level)
