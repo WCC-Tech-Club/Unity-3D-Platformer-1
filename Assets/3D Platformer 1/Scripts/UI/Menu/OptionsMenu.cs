@@ -52,6 +52,51 @@ public sealed class OptionsMenu : MonoBehaviour
         }
     }
 
+    [Serializable]
+    private class ToggleGroup
+    {
+        public Toggle toggle;
+        public Text label;
+
+        public bool UnsavedChange { get; private set; }
+
+        public void Init(bool value)
+        {
+            toggle.isOn = value;
+        }
+
+        public void DefaultValue(bool value)
+        {
+            toggle.isOn = value;
+        }
+
+        public void RevertValue(bool value)
+        {
+            toggle.isOn = value;
+            label.fontStyle = FontStyle.Normal;
+        }
+
+        public void SaveValue(Action<bool> saveAction)
+        {
+            saveAction(toggle.isOn);
+            label.fontStyle = FontStyle.Normal;
+        }
+
+        public void CheckForChange(bool original)
+        {
+            if (toggle.isOn == original)
+            {
+                label.fontStyle = FontStyle.Normal;
+                UnsavedChange = false;
+            }
+            else
+            {
+                label.fontStyle = FontStyle.BoldAndItalic;
+                UnsavedChange = true;
+            }
+        }
+    }
+
     [SerializeField]
     private Button saveButton;
     [SerializeField]
@@ -65,6 +110,9 @@ public sealed class OptionsMenu : MonoBehaviour
     private SliderGroup cameraYawAxisSensitivityOption;
     [SerializeField]
     private SliderGroup cameraZoomAxisSensitivityOption;
+    [SerializeField]
+    private ToggleGroup cameraInvertZoomOption;
+
 
     void Awake()
     {
@@ -75,6 +123,7 @@ public sealed class OptionsMenu : MonoBehaviour
         cameraPitchAxisSensitivityOption.Init(InputManager.MinCameraSensitivity, InputManager.MaxCameraSensitivity, Game.InputManager.CameraSettings.PitchAxisSensitivity);
         cameraYawAxisSensitivityOption.Init(InputManager.MinCameraSensitivity, InputManager.MaxCameraSensitivity, Game.InputManager.CameraSettings.YawAxisSensitivity);
         cameraZoomAxisSensitivityOption.Init(InputManager.MinCameraSensitivity, InputManager.MaxCameraSensitivity, Game.InputManager.CameraSettings.ZoomAxisSensitivity);
+        cameraInvertZoomOption.Init(Game.InputManager.CameraSettings.InvertZoom);
     }
 
     void Update()
@@ -82,10 +131,12 @@ public sealed class OptionsMenu : MonoBehaviour
         cameraPitchAxisSensitivityOption.CheckForChange(Game.InputManager.CameraSettings.PitchAxisSensitivity);
         cameraYawAxisSensitivityOption.CheckForChange(Game.InputManager.CameraSettings.YawAxisSensitivity);
         cameraZoomAxisSensitivityOption.CheckForChange(Game.InputManager.CameraSettings.ZoomAxisSensitivity);
+        cameraInvertZoomOption.CheckForChange(Game.InputManager.CameraSettings.InvertZoom);
 
         if (cameraPitchAxisSensitivityOption.UnsavedChange ||
             cameraYawAxisSensitivityOption.UnsavedChange ||
-            cameraZoomAxisSensitivityOption.UnsavedChange)
+            cameraZoomAxisSensitivityOption.UnsavedChange ||
+            cameraInvertZoomOption.UnsavedChange)
         {
             saveButton.interactable = true;
             revertButton.interactable = true;
@@ -102,6 +153,7 @@ public sealed class OptionsMenu : MonoBehaviour
         cameraPitchAxisSensitivityOption.RevertValue(Game.InputManager.CameraSettings.PitchAxisSensitivity);
         cameraYawAxisSensitivityOption.RevertValue(Game.InputManager.CameraSettings.YawAxisSensitivity);
         cameraZoomAxisSensitivityOption.RevertValue(Game.InputManager.CameraSettings.ZoomAxisSensitivity);
+        cameraInvertZoomOption.RevertValue(Game.InputManager.CameraSettings.InvertZoom);
     }
 
     private void Save()
@@ -109,6 +161,7 @@ public sealed class OptionsMenu : MonoBehaviour
         cameraPitchAxisSensitivityOption.SaveValue((value) => { Game.InputManager.CameraSettings.PitchAxisSensitivity = value; });
         cameraYawAxisSensitivityOption.SaveValue((value) => { Game.InputManager.CameraSettings.YawAxisSensitivity = value; });
         cameraZoomAxisSensitivityOption.SaveValue((value) => { Game.InputManager.CameraSettings.ZoomAxisSensitivity = value; });
+        cameraInvertZoomOption.SaveValue((value) => { Game.InputManager.CameraSettings.InvertZoom = value; });
     }
 
     private void Defaults()
@@ -116,5 +169,6 @@ public sealed class OptionsMenu : MonoBehaviour
         cameraPitchAxisSensitivityOption.DefaultValue(InputManager.DefaultCameraPitchAxisSensitivity);
         cameraYawAxisSensitivityOption.DefaultValue(InputManager.DefaultCameraYawAxisSensitivity);
         cameraZoomAxisSensitivityOption.DefaultValue(InputManager.DefaultCameraZoomAxisSensitivity);
+        cameraInvertZoomOption.DefaultValue(InputManager.DefaultCameraInvertZoom);
     }
 }
