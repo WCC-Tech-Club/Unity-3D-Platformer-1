@@ -20,6 +20,15 @@ public static class MenuItems
         "Player.prefab"
     };
 
+    [MenuItem("WCC Tech Club/Cleal PlayerPrefs")]
+    public static void ClearPlayerPrefs()
+    {
+        if (EditorUtility.DisplayDialog("Clear PlayerPrefs Confermation", "Are you sure you want to clear PlayerPrefs?", "Yes", "No"))
+        {
+            PlayerPrefs.DeleteAll();
+        }
+    }
+
     [MenuItem("WCC Tech Club/Game Controller %#g")]
     public static void InspectGameController()
     {
