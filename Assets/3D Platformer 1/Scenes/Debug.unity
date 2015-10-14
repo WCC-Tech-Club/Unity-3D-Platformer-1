@@ -125,6 +125,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11463370, guid: d540409eae016cc41b40b9a23d3692ac, type: 2}
+      propertyPath: maxAngularVelocity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11463370, guid: d540409eae016cc41b40b9a23d3692ac, type: 2}
+      propertyPath: rollTorque
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d540409eae016cc41b40b9a23d3692ac, type: 2}
   m_IsPrefabParent: 0

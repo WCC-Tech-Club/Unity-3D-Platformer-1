@@ -7,8 +7,6 @@ public sealed class PlayerMovement : MonoBehaviour
     private float maxAngularVelocity;           // Max rotational speed the ball can have.
     [SerializeField]
     private float rollTorque;                   // Amount of force applied the ball to roll.
-    [SerializeField]
-    private float jumpForce;                    // Amount of upwards force applied to the ball to jump.
 
     private new Rigidbody rigidbody;            // Reference to local Rigidbody.
 
