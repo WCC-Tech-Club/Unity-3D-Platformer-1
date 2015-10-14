@@ -14,14 +14,22 @@ public sealed class InputManager : MonoBehaviour
     [Serializable]
     private class CameraInputSettings : ICameraSettings
     {
-        [Range(MinCameraSensitivity, MaxCameraSensitivity)]
-        public float pitchAxisSensitivity = 20;                 // Pitch axis sensitivity.
+        private const float DefaultPitchAxisSensitivity = 20;
+        private const float DefaultYawAxisSensitivity = 20;
+        private const float DefaultZoomAxisSensitivity = 10;
+
+        private const string PitchAxisSensitivityPrefKey = "camera-pitch-axis-sensitivity";
+        private const string YawAxisSensitivityPrefKey = "camera-yaw-axis-sensitivity";
+        private const string ZoomAxisSensitivityPrefKey = "camera-zoom-axis-sensitivity";
 
         [Range(MinCameraSensitivity, MaxCameraSensitivity)]
-        public float yawAxisSensitivity = 20;                   // Yaw axis sensitivity.
+        public float pitchAxisSensitivity = DefaultPitchAxisSensitivity;            // Pitch axis sensitivity.
 
         [Range(MinCameraSensitivity, MaxCameraSensitivity)]
-        public float zoomAxisSensitivity = 10;                  // Zoom axis sensitivity.
+        public float yawAxisSensitivity = DefaultYawAxisSensitivity;                // Yaw axis sensitivity.
+
+        [Range(MinCameraSensitivity, MaxCameraSensitivity)]
+        public float zoomAxisSensitivity = DefaultZoomAxisSensitivity;              // Zoom axis sensitivity.
 
         public float PitchAxisSensitivity
         {
@@ -47,6 +55,20 @@ public sealed class InputManager : MonoBehaviour
             YawAxisSensitivity = yawAxisSensitivity;
             ZoomAxisSensitivity = zoomAxisSensitivity;
         }
+
+        public void LoadFromPrefs()
+        {
+            PitchAxisSensitivity = PlayerPrefs.GetFloat(PitchAxisSensitivityPrefKey, DefaultPitchAxisSensitivity);
+            PitchAxisSensitivity = PlayerPrefs.GetFloat(YawAxisSensitivityPrefKey, DefaultYawAxisSensitivity);
+            PitchAxisSensitivity = PlayerPrefs.GetFloat(ZoomAxisSensitivityPrefKey, DefaultZoomAxisSensitivity);
+        }
+
+        public void SaveToPrefs()
+        {
+            PlayerPrefs.SetFloat(PitchAxisSensitivityPrefKey, pitchAxisSensitivity);
+            PlayerPrefs.SetFloat(YawAxisSensitivityPrefKey, yawAxisSensitivity);
+            PlayerPrefs.SetFloat(ZoomAxisSensitivityPrefKey, zoomAxisSensitivity);
+        }
     }
 
     [SerializeField]
@@ -55,6 +77,16 @@ public sealed class InputManager : MonoBehaviour
     void OnValidate()
     {
         cameraSettings.Validate();
+    }
+
+    void Awake()
+    {
+        cameraSettings.LoadFromPrefs();
+    }
+
+    void OnApplicationQuit()
+    {
+        cameraSettings.SaveToPrefs();
     }
     #endregion
 
