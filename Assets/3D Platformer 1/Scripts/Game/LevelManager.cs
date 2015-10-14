@@ -109,8 +109,6 @@ public sealed class LevelManager : MonoBehaviour
         }
     }
 
-    public float CurrentLevelBestTime { get { return currentLevel.HasValue ? PlayerPrefs.GetFloat(levels[currentLevel.Value], 99999.99f) : -1; } }
-
     /// <summary>
     ///		Loads the main menu.
     /// </summary>
@@ -192,6 +190,21 @@ public sealed class LevelManager : MonoBehaviour
     {
         // Reload current level to a fresh start.
         Application.LoadLevel(CurrentLevelName);
+    }
+
+    public static string FormatTime(float time)
+    {
+        return time.ToString("0.##") + " Seconds";
+    }
+
+    public float GetBestTime(int level)
+    {
+        return PlayerPrefs.GetFloat(levels[level], 99999.99f);
+    }
+
+    public string GetBestTimeFormated(int level)
+    {
+        return FormatTime(GetBestTime(level));
     }
 
     void OnLevelWasLoaded(int level)

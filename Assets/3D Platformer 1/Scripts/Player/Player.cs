@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
 
             // Tell the movement component to move.
             playerMovement.Roll(Game.InputManager.HorizontalAxis, Game.InputManager.VerticalAxis, levelController.CameraController.Yaw);
-            Game.InputManager.JumpButton(playerMovement.Jump);
         }
     }
 }

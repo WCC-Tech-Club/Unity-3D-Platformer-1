@@ -61,7 +61,6 @@ public sealed class InputManager : MonoBehaviour
     #region Raw Input
     private float horizontal;           // Horizontal axis input value.
     private float vertical;             // Vertical axis input value.
-    private bool jump;                  // jump button input value.
 
     private float mouseX;               // Mouse X axis input value.
     private float mouseY;               // Mouse Y axis input value.
@@ -79,11 +78,6 @@ public sealed class InputManager : MonoBehaviour
     public float MouseY { get { return mouseY; } }
 
     public float MouseScrollWheel { get { return mouseScrollWheel; } }
-
-    public void JumpButton(Action jumpAction)
-    {
-        ButtonAction(jumpAction, ref jump);
-    }
 
     public void MenuButton(Action menuAction)
     {
@@ -111,7 +105,6 @@ public sealed class InputManager : MonoBehaviour
     {
         InputRawAxis("Horizontal", ref horizontal);
         InputRawAxis("Vertical", ref vertical);
-        InputButtonDown("Jump", ref jump);
 
         InputRawAxis("Mouse X", ref mouseX);
         InputRawAxis("Mouse Y", ref mouseY);

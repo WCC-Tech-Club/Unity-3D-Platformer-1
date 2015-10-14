@@ -13,6 +13,7 @@ public static class MenuItems
 
     private static readonly string[] LevelRequirementPrefabs =                                          // Array of prefab files that are required in a level.
     {
+        "End Of Level.prefab",
         "LevelController.prefab",
         "Level UI.prefab",
         "Main Camera.prefab",
@@ -53,9 +54,6 @@ public static class MenuItems
             // We do not want the default `Main Camera` object do destroy that.
             Object.DestroyImmediate(GameObject.Find("Main Camera"));
 
-            // Create a new empty object to act as the root for all of the required objects and reference its transform.
-            Transform requiredRoot = new GameObject("Level Requirements").transform;
-
             // For each required prefab file name...
             foreach (string levelRequirement in LevelRequirementPrefabs)
             {
@@ -67,15 +65,22 @@ public static class MenuItems
 
                 // Disconect it from the prefab so changes to the prefab do not effect the newly created object
                 PrefabUtility.DisconnectPrefabInstance(requiredObject);
-
-                // Set the new required object to be a child of the previously refrenced root object.
-                requiredObject.transform.SetParent(requiredRoot);
             }
 
             // Reference the objects that need connecting to each other.
+            EndOfLevel endOfLevel = Object.FindObjectOfType<EndOfLevel>();
             LevelController levelController = Object.FindObjectOfType<LevelController>();
             CameraController cameraController = Object.FindObjectOfType<CameraController>();
             Player player = Object.FindObjectOfType<Player>();
+            
+            // Create a new serialized object of the end of level.
+            SerializedObject serializedEndOfLevel = new SerializedObject(endOfLevel);
+
+            // Set the appropriate properties to their correct values.
+            serializedEndOfLevel.FindProperty("menuSwitcher").objectReferenceValue = Object.FindObjectOfType<MenuSwitcher>();
+
+            // Apply the changed properties without an undo.
+            serializedEndOfLevel.ApplyModifiedPropertiesWithoutUndo();
 
             // Create a new serialized object of the level controller.
             SerializedObject serializedLevelController = new SerializedObject(levelController);

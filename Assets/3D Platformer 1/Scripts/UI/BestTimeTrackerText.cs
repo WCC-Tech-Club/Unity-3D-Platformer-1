@@ -14,23 +14,32 @@ public sealed class BestTimeTrackerText : MonoBehaviour
 
     void OnEnable()
     {
-        // Get the existing best time
-        float bestTime = Game.LevelManager.CurrentLevelBestTime;
-
-        // Get the current time.
-        float currentTime = Time.timeSinceLevelLoad;
-
-        // If the current time is better...
-        if (currentTime < bestTime)
+        // If we are in a numeric level...
+        if (Game.LevelManager.CurrentLevel.HasValue)
         {
-            // ... set the best time to the current time.
-            bestTime = currentTime;
+            // ... get the current best time.
+            float bestTime = Game.LevelManager.GetBestTime(Game.LevelManager.CurrentLevel.Value);
 
-            // Store the new best time in the player prefs for the level.
-            PlayerPrefs.SetFloat(Game.LevelManager.CurrentLevelName, bestTime);
+            // Get the current time.
+            float currentTime = Time.timeSinceLevelLoad;
+
+            // If the current time is better...
+            if (currentTime < bestTime)
+            {
+                // ... set the best time to the current time.
+                bestTime = currentTime;
+
+                // Store the new best time in the player prefs for the level.
+                PlayerPrefs.SetFloat(Game.LevelManager.CurrentLevelName, bestTime);
+            }
+
+            // Set the text to represent the formated best time.
+            text.text = LevelManager.FormatTime(bestTime);
         }
-
-        // Set the text to represent the formated best time.
-        text.text = bestTime.ToString("0.##") + " Seconds";
+        else
+        {
+            // ... else set text object active to false.
+            text.text = "N/A";
+        }
     }
 }

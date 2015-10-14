@@ -16,11 +16,9 @@ public sealed class LoadNextLevelButton : MonoBehaviour
         {
             // ... add a listener to the local `Button` component to load next level.
             GetComponent<Button>().onClick.AddListener(LoadNextLevel);
-        }
-        else
-        {
-            // Make the button not interactable.
-            GetComponent<Button>().interactable = false;
+
+            // Make the button interactable.
+            GetComponent<Button>().interactable = true;
         }
     }
 

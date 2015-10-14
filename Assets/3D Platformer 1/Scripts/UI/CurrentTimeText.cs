@@ -15,6 +15,6 @@ public sealed class CurrentTimeText : MonoBehaviour
     void OnEnable()
     {
         // Set the text to represent the formated time.
-        text.text = Time.timeSinceLevelLoad.ToString("0.##") + " Seconds";
+        text.text = LevelManager.FormatTime(Time.timeSinceLevelLoad);
     }
 }

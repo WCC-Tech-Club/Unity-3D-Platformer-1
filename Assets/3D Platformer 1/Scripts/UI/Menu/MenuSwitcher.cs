@@ -17,6 +17,8 @@ public class MenuSwitcher : MonoBehaviour
     private bool awakeToNone;                       // Flag to determine if the menu should awake with no open menu.
     [SerializeField]
     private int startingMenu;                       // Menu to start on when loaded.
+    [SerializeField]
+    private int finalMenu;                         // Final menu if any.
 
     private int? currentMenu;                       // Current shown menu.
 
@@ -71,6 +73,13 @@ public class MenuSwitcher : MonoBehaviour
                     currentMenu = i;
                     // Set active to true the new current menu.
                     menuRoots[i].SetActive(true);
+
+                    // If switched menu is final menu...
+                    if (finalMenu == i)
+                    {
+                        // ... disable the menu switcher;
+                        enabled = false;
+                    }
                 }
                 else
                 {
@@ -91,6 +100,17 @@ public class MenuSwitcher : MonoBehaviour
     {
         // Switch to start menu index.
         Switch(startingMenu);
+    }
+
+    /// <summary>
+    ///     Switch to the final menu if exists.
+    /// </summary>
+    public void SwitchToFinal()
+    {
+        if (finalMenu >= 0 && finalMenu < menuRoots.Length)
+        {
+            Switch(finalMenu);
+        }
     }
 
     /// <summary>
