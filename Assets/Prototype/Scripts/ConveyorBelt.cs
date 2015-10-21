@@ -15,6 +15,7 @@ public class ConveyorBelt : MonoBehaviour
     void Awake()
     {
         transform = base.transform;
+        Debug.Log(transform.forward);
         
         segments = new ConveyorSegment[size];
         end = offset * size;
@@ -22,7 +23,7 @@ public class ConveyorBelt : MonoBehaviour
         for (int i = 0; i < size; i++)
         {
             Vector3 newSegmentPosition = transform.position + (transform.forward * offset * i);
-            ConveyorSegment newSegment = Instantiate(prefab, newSegmentPosition, Quaternion.identity) as ConveyorSegment;
+            ConveyorSegment newSegment = Instantiate(prefab, newSegmentPosition, transform.rotation) as ConveyorSegment;
             newSegment.transform.parent = transform;
             segments[i] = newSegment;
         }

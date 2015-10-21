@@ -57,9 +57,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSettings:
-    pitchAxisSensitivity: 2
-    yawAxisSensitivity: 2
-    zoomAxisSensitivity: 1
+    pitchAxisSensitivity: 10
+    yawAxisSensitivity: 10
+    zoomAxisSensitivity: 5
     invertZoom: 0
 --- !u!114 &11488376
 MonoBehaviour:
