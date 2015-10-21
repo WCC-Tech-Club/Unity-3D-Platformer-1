@@ -121,7 +121,7 @@ MonoBehaviour:
   zoomDampening: .0250000004
   obstructionLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 513
   sphereCastRadius: .100000001
   hitOffset: .100000001
   returnZoomDampening: .25
@@ -200,6 +200,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: hitOffset
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: obstructionLayers.m_Bits
+      value: 513
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

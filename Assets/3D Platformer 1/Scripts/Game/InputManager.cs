@@ -8,13 +8,13 @@ using System;
 public sealed class InputManager : MonoBehaviour
 {
     #region Input Settings
-    public const float DefaultCameraPitchAxisSensitivity = 20;
-    public const float DefaultCameraYawAxisSensitivity = 20;
-    public const float DefaultCameraZoomAxisSensitivity = 10;
+    public const float DefaultCameraPitchAxisSensitivity = 2;
+    public const float DefaultCameraYawAxisSensitivity = 2;
+    public const float DefaultCameraZoomAxisSensitivity = 1;
     public const int DefaultCameraInvertZoom = 0;
 
-    public const float MinCameraSensitivity = 1;        // Minimum camera sensitivity value.
-    public const float MaxCameraSensitivity = 50;       // Maximum camera sensitivity value.
+    public const float MinCameraSensitivity = 0.02f;        // Minimum camera sensitivity value.
+    public const float MaxCameraSensitivity = 10;       // Maximum camera sensitivity value.
 
     [Serializable]
     private class CameraInputSettings : ICameraSettings

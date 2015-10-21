@@ -57,9 +57,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSettings:
-    pitchAxisSensitivity: 20
-    yawAxisSensitivity: 20
-    zoomAxisSensitivity: 10
+    pitchAxisSensitivity: 2
+    yawAxisSensitivity: 2
+    zoomAxisSensitivity: 1
     invertZoom: 0
 --- !u!114 &11488376
 MonoBehaviour:
@@ -130,15 +130,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: cameraSettings.zoomAxisSensitivity
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: cameraSettings.yawAxisSensitivity
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+      propertyPath: cameraSettings.yawAxisSensitivity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: cameraSettings.pitchAxisSensitivity
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.strings.Array.data[0]
