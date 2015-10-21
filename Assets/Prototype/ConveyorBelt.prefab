@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 11436852, guid: 4b666d83ace9dfc4ba33e67c13ce2021, type: 2}
   size: 30
-  offset: 1
+  offset: .5
   speed: 8
 --- !u!1001 &100100000
 Prefab:
@@ -205,7 +205,7 @@ Prefab:
         type: 2}
     - target: {fileID: 0}
       propertyPath: offset
-      value: 1
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed

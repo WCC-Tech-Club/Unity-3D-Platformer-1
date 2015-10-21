@@ -8,6 +8,6 @@ PhysicMaterial:
   m_Name: Default
   dynamicFriction: .600000024
   staticFriction: .5
-  bounciness: .100000001
+  bounciness: .200000003
   frictionCombine: 0
   bounceCombine: 0
