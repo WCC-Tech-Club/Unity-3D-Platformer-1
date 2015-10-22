@@ -45,8 +45,9 @@ public class ConveyorBelt : MonoBehaviour
             else
             {
                 position = transform.position;
-                position += transform.forward * (distance - end);
                 segment.Rigidbody.position = position;
+                position += transform.forward * (distance - end);
+                segment.Rigidbody.MovePosition(position);
             }
         }
     }

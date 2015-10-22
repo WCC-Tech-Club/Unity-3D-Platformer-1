@@ -13,6 +13,12 @@ public class ElementManager : MonoBehaviour
         set { element = Enum.IsDefined(typeof(Element), value) ? value : Element.None; }
     }
 
+    public bool IsFire { get { return element == Element.Fire; } }
+
+    public bool IsIce { get { return element == Element.Ice; } }
+
+    public bool IsElectrical { get { return element == Element.Electrical; } }
+
     void Update()
     {
         switch (element)
