@@ -3,11 +3,12 @@
 using Codari.CameraControl;
 
 [RequireComponent(typeof(RigidbodyCameraTarget))]
-[RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerMovement), typeof(ElementManager))]
 public class Player : MonoBehaviour
 {
     private CameraTarget localCameraTarget;         // Reference to local CameraTarget.
     private PlayerMovement playerMovement;          // Reference to local PlayerMovement.
+    private ElementManager elementManager;          // Reference to local ElementManager.
 
     private LevelController levelController;        // Reference to global LevelController.
 
@@ -22,6 +23,11 @@ public class Player : MonoBehaviour
     public LevelController LevelController { get { return levelController; } }
 
     /// <summary>
+    ///     Gets the element manager of the player.
+    /// </summary>
+    public ElementManager ElementManager { get { return elementManager; } }
+
+    /// <summary>
     ///     Checks if the camera controller targeting the player right now.
     /// </summary>
     public bool IsCameraTargeting { get { return levelController.CameraController.Target == localCameraTarget; } }
@@ -31,6 +37,7 @@ public class Player : MonoBehaviour
         // Reference local components.
         localCameraTarget = GetComponent<RigidbodyCameraTarget>();
         playerMovement = GetComponent<PlayerMovement>();
+        elementManager = GetComponent<ElementManager>();
     }
 
     void Start()
