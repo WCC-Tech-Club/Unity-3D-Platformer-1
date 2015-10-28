@@ -3,6 +3,9 @@
 [RequireComponent(typeof(Rigidbody))]
 public class GravitationalTerminalVelocity : MonoBehaviour
 {
+    [SerializeField, Range(0.1f, 10f)]
+    private float massMultiplier = 1;
+
     private new Rigidbody rigidbody;
 
     void Awake()
@@ -24,9 +27,11 @@ public class GravitationalTerminalVelocity : MonoBehaviour
     {
         Vector3 velocity = rigidbody.velocity;
 
-        float fg = Physics.gravity.y * rigidbody.mass;
-        float fd = (velocity.y < 0 ? 0.5f : velocity.y > 0 ? -0.5f : 0) * rigidbody.drag * velocity.y * velocity.y;
-        velocity.y += ((fg + fd) / rigidbody.mass) * Time.deltaTime;
+        float mass = rigidbody.mass * massMultiplier;
+
+        float forceGravity = Physics.gravity.y * mass;
+        float forceDrag = (velocity.y < 0 ? 0.5f : velocity.y > 0 ? -0.5f : 0) * rigidbody.drag * velocity.y * velocity.y;
+        velocity.y += ((forceGravity + forceDrag) / mass) * Time.deltaTime;
 
         rigidbody.velocity = velocity;
     }

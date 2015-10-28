@@ -12,11 +12,11 @@ GameObject:
   - 23: {fileID: 2375594}
   - 135: {fileID: 13589020}
   - 54: {fileID: 5495612}
+  - 114: {fileID: 11473856}
   - 114: {fileID: 11468756}
   - 114: {fileID: 11463370}
   - 114: {fileID: 11486946}
   - 114: {fileID: 11465506}
-  - 114: {fileID: 11473856}
   - 215: {fileID: 21553346}
   m_Layer: 8
   m_Name: Player
@@ -75,7 +75,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188248}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: .25
   m_AngularDrag: .25
   m_UseGravity: 1
@@ -95,13 +95,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAngularVelocity: 25
-  rollTorque: 5
-  midAirControl: 4
-  groundCheckDistance: .200000003
-  groundCheckRadius: .400000006
+  rollTorque: 10
+  midAirControl: 6
+  groundCheckDistance: .0700000003
+  groundCheckRadius: .449999988
   groundLyaers:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294966985
 --- !u!114 &11465506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,6 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a29051e179f7d249ba29cc41ed4a4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  massMultiplier: 5
+  dragMultiplier: 1
 --- !u!114 &11486946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,7 +206,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: rollTorque
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: jumpForce
@@ -236,7 +238,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Mass
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
@@ -296,19 +298,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: midAirControl
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: groundCheckDistance
-      value: .200000003
+      value: .0700000003
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: groundLyaers.m_Bits
-      value: 4294967039
+      value: 4294966985
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: groundCheckRadius
-      value: .400000006
+      value: .449999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: massMultiplier
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
