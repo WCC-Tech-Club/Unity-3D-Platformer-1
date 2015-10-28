@@ -96,6 +96,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAngularVelocity: 25
   rollTorque: 5
+  midAirControl: 4
+  groundCheckDistance: .200000003
+  groundCheckRadius: .400000006
+  groundLyaers:
+    serializedVersion: 2
+    m_Bits: 4294967039
 --- !u!114 &11465506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,6 +293,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: midAirControl
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: groundCheckDistance
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: groundLyaers.m_Bits
+      value: 4294967039
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: groundCheckRadius
+      value: .400000006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
