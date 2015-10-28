@@ -105,9 +105,6 @@ public sealed class Game : MonoBehaviour
     }
 
     #region Game Internal
-    [SerializeField, Range(1, 5)]
-    private float gravityModifier;          // Modifier applied to gravity at the start of the game.
-
     private InputManager inputManager;      // Reference to InputManager.
     private LevelManager levelManager;      // Reference to LevelManager.
 
@@ -121,9 +118,6 @@ public sealed class Game : MonoBehaviour
         // Obtain and reference other game managers.
         inputManager = GetComponent<InputManager>();
         levelManager = GetComponent<LevelManager>();
-
-        // Apply the gravity modifier;
-        Physics.gravity *= gravityModifier;
 
         // Set to persist when changing scenes.
         DontDestroyOnLoad(gameObject);
