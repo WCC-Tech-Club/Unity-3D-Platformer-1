@@ -106,6 +106,7 @@ public sealed class InputManager : MonoBehaviour
     #region Raw Input
     private float horizontal;           // Horizontal axis input value.
     private float vertical;             // Vertical axis input value.
+    private bool breaking;              // Break button input value;
 
     private float mouseX;               // Mouse X axis input value.
     private float mouseY;               // Mouse Y axis input value.
@@ -117,6 +118,8 @@ public sealed class InputManager : MonoBehaviour
     public float HorizontalAxis { get { return horizontal; } }
 
     public float VerticalAxis { get { return vertical; } }
+
+    public bool Breaking { get { return breaking; } }
 
     public float MouseX { get { return mouseX; } }
 
@@ -150,6 +153,7 @@ public sealed class InputManager : MonoBehaviour
     {
         InputAxis("Horizontal", ref horizontal);
         InputAxis("Vertical", ref vertical);
+        breaking = Input.GetButton("Break");
 
         InputRawAxis("Mouse X", ref mouseX);
         InputRawAxis("Mouse Y", ref mouseY);

@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
             levelController.CameraController.Zoom += Game.InputManager.CameraZoomAxis;
 
             // Tell the movement component to move based on input.
-            playerMovement.Roll(Game.InputManager.HorizontalAxis, Game.InputManager.VerticalAxis, levelController.CameraController.Yaw);
+            playerMovement.Roll(Game.InputManager.HorizontalAxis, Game.InputManager.VerticalAxis, levelController.CameraController.Yaw, Game.InputManager.Breaking);
         }
     }
 }

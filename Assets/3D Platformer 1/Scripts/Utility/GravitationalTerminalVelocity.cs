@@ -15,8 +15,6 @@ public class GravitationalTerminalVelocity : MonoBehaviour
     void FixedUpdate()
     {
         rigidbody.useGravity = false;
-        Vector3 velocity = rigidbody.velocity;
-        velocity.y += (Physics.gravity.y - (velocity.y * rigidbody.drag)) * Time.deltaTime;
-        rigidbody.velocity = velocity;
+        rigidbody.velocity += (Physics.gravity - (rigidbody.velocity * rigidbody.drag)) * Time.deltaTime;
     }
 }

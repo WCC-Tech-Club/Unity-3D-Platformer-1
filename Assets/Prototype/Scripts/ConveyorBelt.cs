@@ -15,7 +15,6 @@ public class ConveyorBelt : MonoBehaviour
     void Awake()
     {
         transform = base.transform;
-        Debug.Log(transform.forward);
         
         segments = new ConveyorSegment[size];
         end = offset * size;

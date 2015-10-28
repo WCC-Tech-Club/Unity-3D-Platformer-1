@@ -129,8 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a29051e179f7d249ba29cc41ed4a4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terminalVelocity: 50
-  speed: 0
 --- !u!114 &11486946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,7 +206,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: -1.48000002
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
