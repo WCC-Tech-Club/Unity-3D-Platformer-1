@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 
-using System.Collections.Generic;
-
 [RequireComponent(typeof(Rigidbody))]
 public class GravitationalTerminalVelocity : MonoBehaviour
 {
@@ -12,11 +10,24 @@ public class GravitationalTerminalVelocity : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
+    void OnEnable()
     {
         rigidbody.useGravity = false;
+    }
+
+    void OnDisable()
+    {
+        rigidbody.useGravity = true;
+    }
+
+    void FixedUpdate()
+    {
         Vector3 velocity = rigidbody.velocity;
-        velocity.y += (Physics.gravity.y - (velocity.y * rigidbody.drag)) * Time.deltaTime;
+
+        float fg = Physics.gravity.y * rigidbody.mass;
+        float fd = (velocity.y < 0 ? 0.5f : velocity.y > 0 ? -0.5f : 0) * rigidbody.drag * velocity.y * velocity.y;
+        velocity.y += ((fg + fd) / rigidbody.mass) * Time.deltaTime;
+
         rigidbody.velocity = velocity;
     }
 }
