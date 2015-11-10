@@ -2,10 +2,24 @@
 
 using System;
 
+[RequireComponent(typeof(Renderer))]
 public class ElementManager : MonoBehaviour
 {
+    [Serializable]
+    private class Materials
+    {
+        public Material normal;
+        public Material fire;
+    }
+
     [SerializeField]
     private Element element;
+
+    [SerializeField]
+    private Materials materials;
+
+    [SerializeField]
+    private Transform[] fireParticles;
 
     public Element Element
     {
