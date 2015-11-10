@@ -10,6 +10,8 @@ public class ElementManager : MonoBehaviour
     {
         public Material normal;
         public Material fire;
+        public Material ice;
+        public Material electrical;
     }
 
     [SerializeField]
@@ -19,7 +21,11 @@ public class ElementManager : MonoBehaviour
     private Materials materials;
 
     [SerializeField]
-    private Transform[] fireParticles;
+    private GameObject fireParticlePrefab;
+    [SerializeField]
+    private GameObject iceParticlePrefab;
+    [SerializeField]
+    private GameObject electricalParticlePrefab;
 
     public Element Element
     {
@@ -33,22 +39,50 @@ public class ElementManager : MonoBehaviour
 
     public bool IsElectrical { get { return element == Element.Electrical; } }
 
+    private new Renderer renderer;
+
+    private GameObject fireParticles, iceParticles, electricalParticles;
+
+    void Awake()
+    {
+        renderer = GetComponent<Renderer>();
+        fireParticles = Instantiate(fireParticlePrefab);
+        iceParticles = Instantiate(iceParticlePrefab);
+        electricalParticles = Instantiate(electricalParticlePrefab);
+    }
+
     void Update()
     {
+        fireParticles.transform.position = transform.position;
+        iceParticles.transform.position = transform.position;
+        electricalParticles.transform.position = transform.position;
+
         switch (element)
         {
         case Element.None:
         default:
-            // Default stuff
+            renderer.sharedMaterial = materials.normal;
+            fireParticles.SetActive(false);
+            iceParticles.SetActive(false);
+            electricalParticles.SetActive(false);
             break;
         case Element.Fire:
-            // Fire stuff
+            renderer.sharedMaterial = materials.fire;
+            fireParticles.SetActive(true);
+            iceParticles.SetActive(false);
+            electricalParticles.SetActive(false);
             break;
         case Element.Ice:
-            // Ice stuff
+            renderer.sharedMaterial = materials.ice;
+            fireParticles.SetActive(false);
+            iceParticles.SetActive(true);
+            electricalParticles.SetActive(false);
             break;
         case Element.Electrical:
-            // Electrical stuff
+            renderer.sharedMaterial = materials.electrical;
+            fireParticles.SetActive(false);
+            iceParticles.SetActive(false);
+            electricalParticles.SetActive(true);
             break;
         }
     }

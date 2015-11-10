@@ -148,6 +148,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: 0
+  materials:
+    normal: {fileID: 2100000, guid: 2e12b70874bd4bf4883b2d58e3375fe2, type: 2}
+    fire: {fileID: 2100000, guid: 5a8d419f8c497ef4cb1989db6a464060, type: 2}
+    ice: {fileID: 2100000, guid: 3c86f28abb0f2454c8309ff2a72599e0, type: 2}
+    electrical: {fileID: 2100000, guid: 1decfa747e34ffe44b778635217fdbd7, type: 2}
+  fireParticlePrefab: {fileID: 146068, guid: 3861986c5684fdd4fbe2da6ab0b56992, type: 2}
+  iceParticlePrefab: {fileID: 119556, guid: 7f0160f793216304ab1d724a53cf7409, type: 2}
+  electricalParticlePrefab: {fileID: 155338, guid: a1d3f7a35b12b45459c8d39a10ce5227,
+    type: 2}
 --- !u!135 &13589020
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -319,6 +328,34 @@ Prefab:
       propertyPath: m_UseGravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: materials.normal
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e12b70874bd4bf4883b2d58e3375fe2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: materials.electrical
+      value: 
+      objectReference: {fileID: 2100000, guid: 1decfa747e34ffe44b778635217fdbd7, type: 2}
+    - target: {fileID: 0}
+      propertyPath: materials.ice
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c86f28abb0f2454c8309ff2a72599e0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: materials.fire
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a8d419f8c497ef4cb1989db6a464060, type: 2}
+    - target: {fileID: 0}
+      propertyPath: fireParticlePrefab
+      value: 
+      objectReference: {fileID: 146068, guid: 3861986c5684fdd4fbe2da6ab0b56992, type: 2}
+    - target: {fileID: 0}
+      propertyPath: iceParticlePrefab
+      value: 
+      objectReference: {fileID: 119556, guid: 7f0160f793216304ab1d724a53cf7409, type: 2}
+    - target: {fileID: 0}
+      propertyPath: electricalParticlePrefab
+      value: 
+      objectReference: {fileID: 155338, guid: a1d3f7a35b12b45459c8d39a10ce5227, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 188248}
