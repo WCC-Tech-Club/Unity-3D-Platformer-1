@@ -11,14 +11,16 @@ GameObject:
   - 33: {fileID: 3345546}
   - 23: {fileID: 2378564}
   - 65: {fileID: 6595236}
-  - 135: {fileID: 13545684}
+  - 65: {fileID: 6565848}
   - 114: {fileID: 11416960}
+  - 54: {fileID: 5464296}
+  - 114: {fileID: 11443438}
   m_Layer: 10
   m_Name: Exploding Box
   m_TagString: Explosive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &409144
 Transform:
@@ -27,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .5, z: 3.18000007}
+  m_LocalPosition: {x: -1.98000002, y: .5, z: 3.18000007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +44,9 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 962c17792ec9e43439089e35fe132c04, type: 2}
+  - {fileID: 2100000, guid: 8c3ef14646c94ff49a83231894ebc1b0, type: 2}
+  - {fileID: 2100000, guid: 299598604cb790c44b071b907b3ff5b2, type: 2}
+  - {fileID: 2100000, guid: 3a1b7874447bdc248955d62769c7af5f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -62,7 +66,34 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164042}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 78cd48ffdfc2e2147a732143b9a75f0f, type: 3}
+--- !u!54 &5464296
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164042}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: .400000006
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6565848
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164042}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6595236
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -87,20 +118,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 400010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
-  spreadRadius: 1.5
+  spreadRadius: 1.25
   spreadDelay: .200000003
---- !u!135 &13545684
-SphereCollider:
+  spreadLayers:
+    serializedVersion: 2
+    m_Bits: 1032
+--- !u!114 &11443438
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164042}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a29051e179f7d249ba29cc41ed4a4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  massMultiplier: .200000003
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -109,8 +143,12 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: spreadRadius
-      value: 1.5
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
@@ -119,6 +157,46 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Explosive
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 78cd48ffdfc2e2147a732143b9a75f0f, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c3ef14646c94ff49a83231894ebc1b0, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 299598604cb790c44b071b907b3ff5b2, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a1b7874447bdc248955d62769c7af5f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: spreadLayers.m_Bits
+      value: 1032
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Drag
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: massMultiplier
+      value: .200000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

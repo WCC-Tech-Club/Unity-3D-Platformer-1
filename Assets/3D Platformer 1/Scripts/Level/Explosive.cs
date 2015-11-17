@@ -10,6 +10,9 @@ public class Explosive : MonoBehaviour
     [SerializeField]
     private float spreadDelay = 0.2f;
 
+    [SerializeField]
+    private LayerMask spreadLayers = -1;
+
     private bool exploding;
 
     void OnTriggerEnter(Collider collider)
@@ -39,7 +42,7 @@ public class Explosive : MonoBehaviour
 
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        foreach (Collider collider in Physics.OverlapSphere(transform.position, spreadRadius))
+        foreach (Collider collider in Physics.OverlapSphere(transform.position, spreadRadius, spreadLayers, QueryTriggerInteraction.Ignore))
         {
             if (collider.gameObject.tag == "Explosive")
             {
