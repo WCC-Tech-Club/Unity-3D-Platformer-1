@@ -7,6 +7,9 @@ TagManager:
   - LevelController
   - Fire
   - Explosive
+  - Fire Powerup
+  - Electrical Powerup
+  - Ice Powerup
   layers:
   - Default
   - TransparentFX

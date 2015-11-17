@@ -86,6 +86,16 @@ public class ElementManager : MonoBehaviour
             break;
         }
     }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        switch (collider.gameObject.tag)
+        {
+        case "Fire Powerup":
+            Element = Element.Fire;
+            break;
+        }
+    }
 }
 
 public enum Element : byte
