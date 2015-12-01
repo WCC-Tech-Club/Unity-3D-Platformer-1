@@ -94,6 +94,12 @@ public class ElementManager : MonoBehaviour
         case "Fire Powerup":
             Element = Element.Fire;
             break;
+        case "Fire Extingusher":
+            if (IsFire)
+            {
+                Element = Element.None;
+            }
+            break;
         }
     }
 }
