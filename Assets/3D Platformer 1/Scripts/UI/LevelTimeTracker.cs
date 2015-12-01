@@ -17,7 +17,7 @@ public sealed class LevelTimeTracker : MonoBehaviour
         float? bestTime = Game.LevelManager.CurrentLevelBestTime;
 
         // If there is a current best time...
-        if (bestTime.HasValue && currentTime < bestTime.Value)
+        if (!bestTime.HasValue || currentTime < bestTime.Value)
         {
             // ... set the best time to the current time.
             bestTime = currentTime;
