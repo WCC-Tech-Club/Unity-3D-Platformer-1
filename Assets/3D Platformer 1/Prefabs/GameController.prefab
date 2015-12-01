@@ -44,7 +44,8 @@ MonoBehaviour:
   mainMenu: Main Menu
   debugLevel: Debug
   levels:
-    strings: []
+    strings:
+    - First Level
 --- !u!114 &11485266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,7 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d7404187514a348acd7544300abe0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityModifier: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -86,7 +86,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.strings.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.Array.data[0]
@@ -142,7 +142,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.strings.Array.data[0]
-      value: Test Level
+      value: a
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: levels.strings.Array.data[1]
@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: debugLevel
-      value: Debug
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: mainMenu
