@@ -10,6 +10,7 @@ TagManager:
   - Fire Powerup
   - Electrical Powerup
   - Ice Powerup
+  - Fire Extingusher
   layers:
   - Default
   - TransparentFX
